@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -19,16 +19,47 @@
             color: #e2e8f0;
             overflow-x: hidden;
         }
+        /* --- Grid Background --- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -2;
+            opacity: 0.5;
+        }
         .section-title {
             @apply text-4xl md:text-5xl font-bold mb-12 text-white text-center;
         }
         .card {
             background-color: rgba(15, 23, 42, 0.5); /* Semi-transparent dark slate */
             backdrop-filter: blur(10px);
-            @apply rounded-2xl border border-slate-800 transition-all duration-300 hover:border-blue-500 hover:bg-slate-800/50;
+            @apply rounded-2xl border border-slate-800 transition-all duration-300 relative;
+        }
+        /* --- Glowing Border Effect for Interactive Cards --- */
+        .interactive-card:hover::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, #22d3ee, #06b6d4, #22d3ee);
+            border-radius: 1.25rem; /* slightly larger than card's rounded-2xl */
+            z-index: -1;
+            animation: glow 3s linear infinite;
+            background-size: 200% 200%;
+        }
+        @keyframes glow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .skill-tag {
-            @apply bg-slate-700 text-blue-300 text-sm font-medium px-4 py-1.5 rounded-full border border-slate-600;
+            @apply bg-slate-700 text-cyan-300 text-sm font-medium px-4 py-1.5 rounded-full border border-slate-600 transition-all duration-300 hover:bg-slate-600 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-1;
         }
         
         /* --- Video Background --- */
@@ -39,8 +70,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: -1;
-            opacity: 0.15;
+            z-index: -3;
+            opacity: 0.25;
         }
 
         /* --- Glowing Cursor --- */
@@ -48,12 +79,17 @@
             position: fixed;
             width: 400px;
             height: 400px;
-            background: radial-gradient(circle, rgba(29, 78, 216, 0.3) 0%, rgba(29, 78, 216, 0) 60%);
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.25) 0%, rgba(34, 211, 238, 0) 60%);
             border-radius: 50%;
             pointer-events: none;
             transform: translate(-50%, -50%);
             transition: transform 0.1s ease-out;
             z-index: -1;
+        }
+
+        /* --- Gradient Text --- */
+        .gradient-text {
+            @apply bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-500 text-transparent bg-clip-text;
         }
 
         /* --- Typewriter Effect --- */
@@ -72,7 +108,7 @@
             display: inline-block;
             width: 3px;
             height: 1em;
-            background-color: #60a5fa;
+            background-color: #67e8f9; /* Cyan-300 */
             animation: blink 1s infinite;
             margin-left: 0.25rem;
         }
@@ -96,31 +132,31 @@
 <body class="text-slate-300">
     <div id="cursor-glow"></div>
     <video autoplay muted loop id="video-bg">
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-circuit-board-with-moving-electrons-4328-large.mp4" type="video/mp4">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-motherboard-with-moving-parts-42173-large.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
     <!-- Header -->
     <header class="bg-black/50 backdrop-blur-lg fixed w-full z-20 border-b border-slate-800">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-white tracking-tight">Aadil Vahora</a>
+            <a href="#" class="text-2xl font-bold text-white tracking-tight gradient-text">Aadil Vahora</a>
             <nav class="hidden md:flex items-center space-x-8">
-                <a href="#about" class="text-slate-300 hover:text-blue-400 font-medium">About</a>
-                <a href="#experience" class="text-slate-300 hover:text-blue-400 font-medium">Experience</a>
-                <a href="#projects" class="text-slate-300 hover:text-blue-400 font-medium">Projects</a>
-                <a href="#skills" class="text-slate-300 hover:text-blue-400 font-medium">Skills</a>
+                <a href="#about" class="text-slate-300 hover:text-cyan-400 font-medium">About</a>
+                <a href="#skills" class="text-slate-300 hover:text-cyan-400 font-medium">Skills</a>
+                <a href="#projects" class="text-slate-300 hover:text-cyan-400 font-medium">Projects</a>
+                <a href="#experience" class="text-slate-300 hover:text-cyan-400 font-medium">Experience</a>
             </nav>
-            <a href="mailto:22ee074@bvmengineering.ac.in" class="hidden md:block bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Contact</a>
+            <a href="mailto:22ee074@bvmengineering.ac.in" class="hidden md:block bg-cyan-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-cyan-700 transition-colors">Contact</a>
             <button id="mobile-menu-button" class="md:hidden">
                 <i data-lucide="menu" class="text-white"></i>
             </button>
         </div>
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2 border-t border-slate-800">
-            <a href="#about" class="block py-2 text-slate-300 hover:text-blue-400 font-medium">About</a>
-            <a href="#experience" class="block py-2 text-slate-300 hover:text-blue-400 font-medium">Experience</a>
-            <a href="#projects" class="block py-2 text-slate-300 hover:text-blue-400 font-medium">Projects</a>
-            <a href="#skills" class="block py-2 text-slate-300 hover:text-blue-400 font-medium">Skills</a>
-            <a href="mailto:22ee074@bvmengineering.ac.in" class="block mt-2 bg-blue-600 text-white text-center px-4 py-2 rounded-lg font-semibold hover:bg-blue-700">Contact</a>
+            <a href="#about" class="block py-2 text-slate-300 hover:text-cyan-400 font-medium">About</a>
+            <a href="#skills" class="block py-2 text-slate-300 hover:text-cyan-400 font-medium">Skills</a>
+            <a href="#projects" class="block py-2 text-slate-300 hover:text-cyan-400 font-medium">Projects</a>
+            <a href="#experience" class="block py-2 text-slate-300 hover:text-cyan-400 font-medium">Experience</a>
+            <a href="mailto:22ee074@bvmengineering.ac.in" class="block mt-2 bg-cyan-600 text-white text-center px-4 py-2 rounded-lg font-semibold hover:bg-cyan-700">Contact</a>
         </div>
     </header>
 
@@ -130,44 +166,78 @@
             <div id="typewriter" class="typewriter-container">
                 <span id="typewriter-text"></span><span class="cursor"></span>
             </div>
-            <p class="mt-8 text-lg text-slate-400 max-w-2xl mx-auto animated-item">
+            <p class="mt-8 text-lg text-slate-400 max-w-2xl mx-auto animated-item" data-delay="100">
                 A passionate engineer with hands-on experience in EV technology, power systems, and circuit design. Eager to apply my technical knowledge to solve real-world challenges.
             </p>
-            <div class="mt-10 flex justify-center items-center gap-6 animated-item">
-                <a href="mailto:22ee074@bvmengineering.ac.in" class="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-transform hover:scale-105">Contact Me</a>
+            <div class="mt-10 flex justify-center items-center gap-6 animated-item" data-delay="200">
+                <a href="mailto:22ee074@bvmengineering.ac.in" class="bg-cyan-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-cyan-700 transition-transform hover:scale-105">Contact Me</a>
                 <div class="flex items-center gap-4">
-                    <a href="https://linkedin.com/in/aadiil" target="_blank" aria-label="LinkedIn" class="text-slate-400 hover:text-blue-400 hover:scale-110 transition-all"><i data-lucide="linkedin" class="w-8 h-8"></i></a>
-                    <a href="https://github.com/aadilll2121" target="_blank" aria-label="GitHub" class="text-slate-400 hover:text-blue-400 hover:scale-110 transition-all"><i data-lucide="github" class="w-8 h-8"></i></a>
+                    <a href="https://linkedin.com/in/aadiil" target="_blank" aria-label="LinkedIn" class="text-slate-400 hover:text-cyan-400 hover:scale-110 transition-all"><i data-lucide="linkedin" class="w-8 h-8"></i></a>
+                    <a href="https://github.com/aadilll2121" target="_blank" aria-label="GitHub" class="text-slate-400 hover:text-cyan-400 hover:scale-110 transition-all"><i data-lucide="github" class="w-8 h-8"></i></a>
                 </div>
             </div>
         </section>
 
-        <!-- About & Education Section -->
+        <!-- About Section -->
         <section id="about" class="py-24">
             <div class="container mx-auto px-6">
-                <h2 class="section-title animated-item">About Me</h2>
-                <div class="grid md:grid-cols-5 gap-12 items-center">
-                    <div class="md:col-span-3 animated-item">
-                        <p class="text-slate-400 mb-4 leading-relaxed text-lg">
-                            I am a dedicated and detail-oriented Electrical Engineering student from Birla Vishvakarma Mahavidyalaya. My academic journey and practical internships have provided me with a solid foundation in power electronics, EV technology, and industrial electrical systems.
-                        </p>
-                        <p class="text-slate-400 leading-relaxed text-lg">
-                            I thrive in collaborative environments and am passionate about leveraging technology to create innovative solutions. My goal is to contribute to a forward-thinking organization where I can continue to learn and grow as an engineer.
-                        </p>
-                    </div>
-                    <div class="md:col-span-2 animated-item">
-                        <div class="card p-6">
-                            <h3 class="text-2xl font-bold text-white mb-4">Education</h3>
-                            <div class="flex items-start gap-4">
-                                <i data-lucide="graduation-cap" class="w-8 h-8 text-blue-400 mt-1 flex-shrink-0"></i>
-                                <div>
-                                    <h4 class="font-semibold text-white">B.Tech in Electrical Engineering</h4>
-                                    <p class="text-slate-400">Birla Vishvakarma Mahavidyalaya</p>
-                                    <p class="text-sm text-slate-500">2022 - 2026</p>
-                                </div>
-                            </div>
+                <div class="text-center">
+                     <h2 class="section-title animated-item">About Me</h2>
+                     <p class="max-w-3xl mx-auto text-slate-400 leading-relaxed text-lg animated-item" data-delay="100">
+                        I am a dedicated and detail-oriented Electrical Engineering student from Birla Vishvakarma Mahavidyalaya. My academic journey and practical internships have provided me with a solid foundation in power electronics, EV technology, and industrial electrical systems. I thrive in collaborative environments and am passionate about leveraging technology to create innovative solutions.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title animated-item">Technical Skills</h2>
+                <div class="max-w-5xl mx-auto">
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-semibold text-white mb-6 text-center animated-item" data-delay="100">Languages & Software</h3>
+                        <div class="flex flex-wrap justify-center gap-4">
+                             <div class="animated-item" data-delay="200"><span class="skill-tag">C</span></div>
+                             <div class="animated-item" data-delay="250"><span class="skill-tag">C++</span></div>
+                             <div class="animated-item" data-delay="300"><span class="skill-tag">Python</span></div>
+                             <div class="animated-item" data-delay="350"><span class="skill-tag">HTML</span></div>
+                             <div class="animated-item" data-delay="400"><span class="skill-tag">CSS</span></div>
+                             <div class="animated-item" data-delay="450"><span class="skill-tag">SQL</span></div>
+                             <div class="animated-item" data-delay="500"><span class="skill-tag">AutoCAD Electrical</span></div>
+                             <div class="animated-item" data-delay="550"><span class="skill-tag">MATLAB/Simulink</span></div>
+                             <div class="animated-item" data-delay="600"><span class="skill-tag">Arduino IDE</span></div>
+                             <div class="animated-item" data-delay="650"><span class="skill-tag">PSpice</span></div>
+                             <div class="animated-item" data-delay="700"><span class="skill-tag">Proteus</span></div>
                         </div>
                     </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-white mb-6 text-center animated-item" data-delay="800">Areas of Expertise</h3>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <div class="animated-item" data-delay="900"><span class="skill-tag">EV Technology</span></div>
+                            <div class="animated-item" data-delay="950"><span class="skill-tag">Power Systems</span></div>
+                            <div class="animated-item" data-delay="1000"><span class="skill-tag">Power Electronics</span></div>
+                            <div class="animated-item" data-delay="1050"><span class="skill-tag">Circuit Design</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title animated-item">Key Projects</h2>
+                <div class="max-w-3xl mx-auto card p-8 animated-item" data-delay="100">
+                    <h3 class="text-2xl font-bold text-white mb-2">Cycloconverter Technologies</h3>
+                    <div class="flex flex-wrap gap-3 mb-4">
+                        <span class="skill-tag">MATLAB</span><span class="skill-tag">Arduino UNO</span><span class="skill-tag">Power Electronics</span><span class="skill-tag">Circuit Design</span>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-slate-400">
+                        <li>Developed a proof-of-concept cycloconverter to step down 220V to 12V using SCRs and an Optocoupler.</li>
+                        <li>Created a complete functional simulation of the circuit in MATLAB/Simulink.</li>
+                        <li>Successfully implemented the control logic for the cycloconverter using an Arduino UNO board.</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -177,9 +247,9 @@
             <div class="container mx-auto px-6">
                 <h2 class="section-title animated-item">Internship Experience</h2>
                 <div class="max-w-4xl mx-auto space-y-8">
-                    <div class="card p-8 animated-item">
+                    <div class="card p-8 animated-item" data-delay="100">
                         <div class="flex items-center gap-4 mb-4">
-                            <i data-lucide="car" class="w-10 h-10 text-blue-400"></i>
+                            <i data-lucide="plug-zap" class="w-10 h-10 text-cyan-400"></i>
                             <div>
                                 <h3 class="text-xl font-bold text-white">EV Technology Intern</h3>
                                 <p class="font-medium text-slate-400">BVM (IEI Organized) | June 2025 - July 2024</p>
@@ -191,9 +261,9 @@
                             <li>Gained hands-on experience with battery pack assembly and E-BAJA car wiring.</li>
                         </ul>
                     </div>
-                    <div class="card p-8 animated-item">
+                    <div class="card p-8 animated-item" data-delay="200">
                         <div class="flex items-center gap-4 mb-4">
-                            <i data-lucide="factory" class="w-10 h-10 text-blue-400"></i>
+                            <i data-lucide="factory" class="w-10 h-10 text-cyan-400"></i>
                             <div>
                                 <h3 class="text-xl font-bold text-white">Summer Intern</h3>
                                 <p class="font-medium text-slate-400">Elecon Engineering Co. Ltd. | June 2024 - July 2024</p>
@@ -209,39 +279,27 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="py-24">
+        <!-- Education & Certifications Section -->
+        <section id="education" class="py-24">
             <div class="container mx-auto px-6">
-                <h2 class="section-title animated-item">Key Projects</h2>
-                <div class="max-w-3xl mx-auto card p-8 animated-item">
-                    <h3 class="text-2xl font-bold text-white mb-2">Cycloconverter Technologies</h3>
-                    <div class="flex flex-wrap gap-3 mb-4">
-                        <span class="skill-tag">MATLAB</span><span class="skill-tag">Arduino UNO</span><span class="skill-tag">Power Electronics</span><span class="skill-tag">Circuit Design</span>
-                    </div>
-                    <ul class="list-disc list-inside space-y-2 text-slate-400">
-                        <li>Developed a proof-of-concept cycloconverter to step down 220V to 12V using SCRs and an Optocoupler.</li>
-                        <li>Created a complete functional simulation of the circuit in MATLAB/Simulink.</li>
-                        <li>Successfully implemented the control logic for the cycloconverter using an Arduino UNO board.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills & Certifications Section -->
-        <section id="skills" class="py-24">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title animated-item">Technical Skills & Certifications</h2>
+                <h2 class="section-title animated-item">Education & Certifications</h2>
                 <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
-                    <div class="space-y-8 animated-item">
-                        <div><h3 class="text-xl font-semibold text-white mb-4">Languages</h3><div class="flex flex-wrap gap-3"><span class="skill-tag">C</span><span class="skill-tag">C++</span><span class="skill-tag">Python</span><span class="skill-tag">HTML</span><span class="skill-tag">CSS</span><span class="skill-tag">SQL</span></div></div>
-                        <div><h3 class="text-xl font-semibold text-white mb-4">Software & Tools</h3><div class="flex flex-wrap gap-3"><span class="skill-tag">AutoCAD Electrical</span><span class="skill-tag">MATLAB/Simulink</span><span class="skill-tag">Arduino IDE</span><span class="skill-tag">PSpice</span><span class="skill-tag">Proteus</span></div></div>
-                        <div><h3 class="text-xl font-semibold text-white mb-4">Technical Expertise</h3><div class="flex flex-wrap gap-3"><span class="skill-tag">EV Technology</span><span class="skill-tag">Power Systems</span><span class="skill-tag">Power Electronics</span><span class="skill-tag">Circuit Design</span></div></div>
+                    <div class="card interactive-card p-8 animated-item" data-delay="100">
+                        <h3 class="text-2xl font-bold text-white mb-6 text-center">Education</h3>
+                        <div class="flex items-start gap-4">
+                            <i data-lucide="graduation-cap" class="w-8 h-8 text-cyan-400 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h4 class="font-semibold text-white">B.Tech in Electrical Engineering</h4>
+                                <p class="text-slate-400">Birla Vishvakarma Mahavidyalaya</p>
+                                <p class="text-sm text-slate-500">2022 - 2026</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card p-8 animated-item">
+                    <div class="card interactive-card p-8 animated-item" data-delay="200">
                         <h3 class="text-2xl font-bold text-white mb-6 text-center">Certifications</h3>
                         <div class="space-y-6">
-                            <div class="flex items-center gap-4"><i data-lucide="award" class="w-8 h-8 text-blue-400 flex-shrink-0"></i><div><h4 class="font-semibold text-white">AutoCAD Electrical</h4><p class="text-slate-400">Information Technology Center, Mogri</p></div></div>
-                            <div class="flex items-center gap-4"><i data-lucide="award" class="w-8 h-8 text-blue-400 flex-shrink-0"></i><div><h4 class="font-semibold text-white">Diploma in Programming Language</h4><p class="text-slate-400">Information Technology Center, Mogri</p></div></div>
+                            <div class="flex items-center gap-4"><i data-lucide="award" class="w-8 h-8 text-cyan-400 flex-shrink-0"></i><div><h4 class="font-semibold text-white">AutoCAD Electrical</h4><p class="text-slate-400">Information Technology Center, Mogri</p></div></div>
+                            <div class="flex items-center gap-4"><i data-lucide="award" class="w-8 h-8 text-cyan-400 flex-shrink-0"></i><div><h4 class="font-semibold text-white">Diploma in Programming Language</h4><p class="text-slate-400">Information Technology Center, Mogri</p></div></div>
                         </div>
                     </div>
                 </div>
@@ -254,7 +312,7 @@
         <div class="container mx-auto px-6 text-center">
             <h3 class="text-2xl font-bold text-white mb-2">Let's Connect</h3>
             <p class="mb-4">Feel free to reach out for opportunities or just to chat.</p>
-            <a href="mailto:22ee074@bvmengineering.ac.in" class="text-lg font-semibold text-blue-400 hover:text-blue-300 transition-colors">22ee074@bvmengineering.ac.in</a>
+            <a href="mailto:22ee074@bvmengineering.ac.in" class="text-lg font-semibold text-cyan-400 hover:text-cyan-300 transition-colors">22ee074@bvmengineering.ac.in</a>
             <div class="mt-6 flex justify-center gap-6"><a href="https://linkedin.com/in/aadiil" target="_blank" aria-label="LinkedIn" class="text-slate-400 hover:text-white"><i data-lucide="linkedin" class="w-6 h-6"></i></a><a href="https://github.com/aadilll2121" target="_blank" aria-label="GitHub" class="text-slate-400 hover:text-white"><i data-lucide="github" class="w-6 h-6"></i></a></div>
             <p class="text-sm text-slate-500 mt-8">&copy; 2024 Aadil Vahora. All Rights Reserved.</p>
         </div>
@@ -282,8 +340,7 @@
         const typewriterElement = document.getElementById('typewriter-text');
         const lines = [
             "Hello, I'm Aadil.",
-            "I'm an Electrical Engineer.",
-            "I build innovative solutions."
+            "I'm an Electrical Engineer."
         ];
         let lineIndex = 0;
         let charIndex = 0;
@@ -320,7 +377,10 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
+                    const delay = parseInt(entry.target.getAttribute('data-delay') || 0);
+                    setTimeout(() => {
+                        entry.target.classList.add('is-visible');
+                    }, delay);
                     observer.unobserve(entry.target);
                 }
             });
@@ -334,3 +394,4 @@
     </script>
 </body>
 </html>
+
