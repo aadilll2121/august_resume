@@ -115,6 +115,25 @@
         }
 
         /* --- Typography & Gradients --- */
+        
+        /* Robust Name Gradient Class */
+        .name-highlight {
+            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%); /* Blue-600 to Indigo-600 (Light Mode) */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .dark .name-highlight {
+            background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%); /* Cyan-400 to Blue-500 (Dark Mode) */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Standard Text Gradient for other elements */
         .text-gradient {
             background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%); /* Blue for light */
             -webkit-background-clip: text;
@@ -239,7 +258,7 @@
                 </div>
                 
                 <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight text-slate-900 dark:text-white">
-                    Hi, I'm <span class="text-gradient">Aadil Vahora</span>
+                    Hi, I'm <span class="name-highlight">Aadil Vahora</span>
                 </h1>
                 
                 <div class="h-16 md:h-20 mb-8 flex justify-center items-center">
