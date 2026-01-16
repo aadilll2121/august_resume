@@ -97,9 +97,9 @@
         }
         
         .dark .glass-panel {
-            /* Dark mode glass */
+            /* Dark mode glass - Increased border opacity for definition */
             background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .nav-glass {
@@ -353,8 +353,8 @@
                             <div>
                                 <h3 class="text-xl font-bold text-slate-900 dark:text-white">B.Tech in Electrical Engineering</h3>
                                 <p class="text-slate-600 dark:text-slate-400 mt-1">Birla Vishvakarma Mahavidyalaya</p>
-                                <p class="text-sm text-slate-500 dark:text-slate-500 mt-2">July 2022 - Present | CPI: 6.51</p>
-                                <p class="text-sm text-slate-500 dark:text-slate-500">Vallabh Vidyanagar, Gujarat</p>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">July 2022 - Present | CPI: 6.51</p>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Vallabh Vidyanagar, Gujarat</p>
                             </div>
                         </div>
                     </div>
@@ -370,11 +370,11 @@
                                 <div class="space-y-4">
                                     <div class="border-l-2 border-cyan-500 pl-4">
                                         <h4 class="font-semibold text-slate-800 dark:text-slate-200">Diploma in Programming Languages</h4>
-                                        <p class="text-sm text-slate-500 dark:text-slate-500">Information Technology Center, Mogri (Oct 2024 - Feb 2025)</p>
+                                        <p class="text-sm text-slate-500 dark:text-slate-400">Information Technology Center, Mogri (Oct 2024 - Feb 2025)</p>
                                     </div>
                                     <div class="border-l-2 border-cyan-500 pl-4">
                                         <h4 class="font-semibold text-slate-800 dark:text-slate-200">AutoCAD Electrical</h4>
-                                        <p class="text-sm text-slate-500 dark:text-slate-500">Information Technology Center, Mogri (June 2024 - July 2024)</p>
+                                        <p class="text-sm text-slate-500 dark:text-slate-400">Information Technology Center, Mogri (June 2024 - July 2024)</p>
                                     </div>
                                 </div>
                             </div>
@@ -403,7 +403,7 @@
                             <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform"></div>
                             
                             <!-- Content Box -->
-                            <div class="ml-10 md:ml-0 md:w-[45%] md:mr-auto glass-panel p-6 rounded-xl hover-card text-right-md">
+                            <div class="ml-10 md:ml-0 md:w-[45%] md:mr-auto glass-panel p-6 rounded-xl hover-card md:text-right">
                                 <span class="text-cyan-600 dark:text-cyan-400 font-mono text-sm">Dec 2025 - Present</span>
                                 <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">Project Intern</h3>
                                 <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">Elcon Engineers Pvt. Ltd., Vadodara</p>
@@ -423,11 +423,11 @@
                             <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform"></div>
                             
                             <!-- Content Box -->
-                            <div class="ml-10 md:ml-0 md:w-[45%] md:mr-auto glass-panel p-6 rounded-xl hover-card">
+                            <div class="ml-10 md:ml-0 md:w-[45%] md:ml-auto glass-panel p-6 rounded-xl hover-card">
                                 <span class="text-cyan-600 dark:text-cyan-400 font-mono text-sm">June 2025</span>
                                 <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">EV Technology Intern</h3>
                                 <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">BVM Engg. College (IEI Organized)</p>
-                                <ul class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed list-none space-y-2">
+                                <ul class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed list-disc pl-5 space-y-2">
                                     <li>Explored EV history, battery technologies, and performed MATLAB simulations.</li>
                                     <li>Received training on microcontrollers, BLDC/PMSM motors, and BMS.</li>
                                     <li>Hands-on E-BAJA car wiring.</li>
@@ -444,7 +444,7 @@
                             <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform"></div>
                             
                             <!-- Content Box -->
-                            <div class="ml-10 md:ml-0 md:w-[45%] md:mr-auto glass-panel p-6 rounded-xl hover-card text-right-md">
+                            <div class="ml-10 md:ml-0 md:w-[45%] md:mr-auto glass-panel p-6 rounded-xl hover-card md:text-right">
                                 <span class="text-cyan-600 dark:text-cyan-400 font-mono text-sm">June 2024 - July 2024</span>
                                 <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">Summer Intern</h3>
                                 <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">Akaaish Mechatronics (Elecon Unit)</p>
@@ -483,9 +483,6 @@
                             <p class="text-slate-600 dark:text-slate-400 mb-6">
                                 Developed and implemented embedded C firmware on an STM32 Microcontroller. Successfully interfaced with a 3-phase inverter driver to achieve stable motor rotation.
                             </p>
-                            <a href="#" class="inline-flex items-center text-cyan-600 dark:text-cyan-400 font-semibold hover:text-cyan-500 dark:hover:text-cyan-300 transition-colors">
-                                View Details <i data-lucide="arrow-up-right" class="w-4 h-4 ml-1"></i>
-                            </a>
                         </div>
                     </div>
 
@@ -504,9 +501,6 @@
                             <p class="text-slate-600 dark:text-slate-400 mb-6">
                                 Designed a proof-of-concept cycloconverter to step down 220V to 12V using SCRs and an Optocoupler. Created functional simulation in MATLAB.
                             </p>
-                            <a href="#" class="inline-flex items-center text-cyan-600 dark:text-cyan-400 font-semibold hover:text-cyan-500 dark:hover:text-cyan-300 transition-colors">
-                                View Details <i data-lucide="arrow-up-right" class="w-4 h-4 ml-1"></i>
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -732,3 +726,4 @@
     </script>
 </body>
 </html>
+
