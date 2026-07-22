@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth dark">
 <head>
@@ -121,15 +122,15 @@
         }
 
         .nav-glass {
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.7);
             box-shadow: 0 8px 32px rgba(15, 23, 42, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         .dark .nav-glass {
-            background: rgba(15, 23, 42, 0.55);
+            background: rgba(15, 23, 42, 0.65);
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
         }
@@ -284,7 +285,7 @@
             border-radius: 4px;
         }
 
-        /* --- Scroll-spy: active section indicator (a little glowing wire under the current link) --- */
+        /* --- Scroll-spy: active section indicator --- */
         .nav-link, .mobile-link {
             position: relative;
         }
@@ -309,7 +310,7 @@
             content: '';
             position: absolute;
             left: 50%;
-            bottom: -8px;
+            bottom: 4px; /* Adjusted for the new dropdown padding */
             width: 28px;
             height: 2px;
             transform: translateX(-50%);
@@ -340,7 +341,7 @@
 
     <!-- Navigation -->
     <header class="fixed top-3 sm:top-4 inset-x-0 z-50 transition-all duration-300" id="navbar">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3 relative">
             <!-- Logo capsule -->
             <a href="#" class="nav-glass rounded-full px-5 py-3 text-2xl font-bold font-mono tracking-tighter hover:text-cyan-600 dark:hover:text-cyan-400 text-slate-900 dark:text-slate-100 transition-colors shrink-0">
                 AV<span class="text-cyan-600 dark:text-cyan-400">.</span>
@@ -356,7 +357,7 @@
             </nav>
 
             <!-- Controls capsule -->
-            <div class="nav-glass rounded-full px-3 py-2 flex items-center gap-3 shrink-0">
+            <div class="nav-glass rounded-full px-3 py-2 flex items-center gap-3 shrink-0 relative z-20">
                 <!-- Theme Toggle Button -->
                 <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200/60 dark:hover:bg-slate-800/60 transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
                     <i data-lucide="sun" class="w-5 h-5 text-yellow-400 hidden dark:block"></i>
@@ -373,21 +374,20 @@
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
+
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu" class="absolute top-full right-4 sm:right-6 mt-4 w-52 nav-glass rounded-3xl py-4 flex flex-col space-y-1 origin-top-right transition-all duration-300 opacity-0 invisible scale-95 md:hidden z-10 shadow-xl border border-white/30 dark:border-slate-600/30">
+                <a href="#about" class="px-6 py-2.5 text-slate-800 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 font-medium mobile-link text-center text-lg">About</a>
+                <a href="#skills" class="px-6 py-2.5 text-slate-800 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 font-medium mobile-link text-center text-lg">Skills</a>
+                <a href="#education" class="px-6 py-2.5 text-slate-800 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 font-medium mobile-link text-center text-lg">Education</a>
+                <a href="#experience" class="px-6 py-2.5 text-slate-800 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 font-medium mobile-link text-center text-lg">Experience</a>
+                <a href="#projects" class="px-6 py-2.5 text-slate-800 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 font-medium mobile-link text-center text-lg">Projects</a>
+                <div class="px-5 pt-3 mt-2 border-t border-slate-300/30 dark:border-slate-600/30">
+                    <a href="mailto:aadilvahora05@gmail.com" class="block w-full text-center py-2.5 rounded-full bg-cyan-600 text-white font-semibold text-sm shadow-lg shadow-cyan-500/30 hover:bg-cyan-500 transition-colors">Connect</a>
+                </div>
+            </div>
         </div>
     </header>
-
-    <!-- Mobile Menu Overlay (kept as a direct child of body — a transformed ancestor would break position:fixed) -->
-    <div id="mobile-menu" class="fixed inset-0 bg-slate-50 dark:bg-slate-950 backdrop-blur-xl z-[60] transform translate-x-full transition-transform duration-300 ease-out flex flex-col justify-center items-center space-y-8 overflow-y-auto py-16 invisible pointer-events-none md:hidden">
-        <button id="mobile-close" class="absolute top-6 right-6 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white" aria-label="Close menu">
-            <i data-lucide="x" class="w-8 h-8"></i>
-        </button>
-        <a href="#about" class="text-2xl text-slate-800 dark:text-white font-light mobile-link">About</a>
-        <a href="#skills" class="text-2xl text-slate-800 dark:text-white font-light mobile-link">Skills</a>
-        <a href="#education" class="text-2xl text-slate-800 dark:text-white font-light mobile-link">Education</a>
-        <a href="#experience" class="text-2xl text-slate-800 dark:text-white font-light mobile-link">Experience</a>
-        <a href="#projects" class="text-2xl text-slate-800 dark:text-white font-light mobile-link">Projects</a>
-        <a href="mailto:aadilvahora05@gmail.com" class="text-cyan-600 dark:text-cyan-400 text-xl font-bold mobile-link">Connect With Me</a>
-    </div>
 
     <main>
         <!-- Hero Section -->
@@ -835,39 +835,61 @@
             if (section) sectionObserver.observe(section);
         });
 
-        // --- 6. Mobile Menu Logic ---
+        // --- 6. Dropdown Mobile Menu Logic ---
         const btn = document.getElementById('mobile-toggle');
         const menu = document.getElementById('mobile-menu');
-        const closeBtn = document.getElementById('mobile-close');
         const links = document.querySelectorAll('.mobile-link');
 
         function openMenu() {
-            menu.classList.remove('translate-x-full', 'invisible', 'pointer-events-none');
-            document.body.style.overflow = 'hidden';
+            menu.classList.remove('invisible', 'opacity-0', 'scale-95');
+            menu.classList.add('opacity-100', 'scale-100');
+            
+            const icon = btn.querySelector('i');
+            if (icon) {
+                icon.setAttribute('data-lucide', 'x');
+                lucide.createIcons();
+            }
         }
 
         function closeMenu() {
-            menu.classList.add('translate-x-full');
-            document.body.style.overflow = '';
-            // Wait for the slide-out transition to finish before hiding for real.
+            menu.classList.remove('opacity-100', 'scale-100');
+            menu.classList.add('opacity-0', 'scale-95');
+            
+            const icon = btn.querySelector('i');
+            if (icon) {
+                icon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            }
+
             setTimeout(() => {
-                if (menu.classList.contains('translate-x-full')) {
-                    menu.classList.add('invisible', 'pointer-events-none');
+                if (menu.classList.contains('opacity-0')) {
+                    menu.classList.add('invisible');
                 }
             }, 300);
         }
 
-        function toggleMenu() {
-            const isOpen = !menu.classList.contains('translate-x-full');
+        function toggleMenu(e) {
+            e.stopPropagation(); // prevent document click from firing instantly
+            const isOpen = menu.classList.contains('opacity-100');
             isOpen ? closeMenu() : openMenu();
         }
 
         btn.addEventListener('click', toggleMenu);
-        closeBtn.addEventListener('click', closeMenu);
         links.forEach(link => link.addEventListener('click', closeMenu));
+        
+        // Close on Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeMenu();
+        });
+
+        // Close on clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menu.classList.contains('invisible') && !menu.contains(e.target) && !btn.contains(e.target)) {
+                closeMenu();
+            }
         });
     </script>
 </body>
 </html>
+
+```
