@@ -1,13 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Aadil Vahora, an Electrical Engineer specializing in EV Technology, Power Systems, and Circuit Design.">
-    <meta name="keywords" content="Electrical Engineer, EV Technology, Power Systems, Aadil Vahora, BVM Engineering, ETAP, STM32">
+    <meta name="theme-color" content="#020617">
+    <meta name="description" content="Portfolio of Aadil Vahora, an Electrical & Instrumentation Engineer specializing in Power Systems, Panel Design, Automation, and EV Technology.">
+    <meta name="keywords" content="Electrical Engineer, Instrumentation Engineer, Automation, SCADA, PLC, Power Systems, Proposal Engineering, Aadil Vahora, BVM Engineering, ETAP, STM32">
     <meta name="author" content="Aadil Vahora">
-    <title>Aadil Vahora | Electrical Engineer</title>
+    <title>Aadil Vahora | Electrical & Instrumentation Engineer</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -22,7 +22,7 @@
 
     <script>
         tailwind.config = {
-            darkMode: 'class', // Enable class-based dark mode
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -31,7 +31,7 @@
                     },
                     colors: {
                         electric: {
-                            400: '#22d3ee', // Cyan
+                            400: '#22d3ee',
                             500: '#06b6d4',
                             600: '#0891b2',
                         }
@@ -53,7 +53,6 @@
 
     <style>
         body {
-            /* Default to light mode background for transition, overridden by Tailwind dark: classes */
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
@@ -65,40 +64,26 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.6;
-            pointer-events: none; /* Let clicks pass through to body */
+            opacity: 0.7;
+            pointer-events: none;
         }
 
         /* --- Scrollbar --- */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1; /* Slate 300 for light */
-            border-radius: 4px;
-        }
-        .dark ::-webkit-scrollbar-thumb {
-            background: #22d3ee; /* Electric Cyan for dark */
-        }
-        .dark ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #22d3ee; }
+        .dark ::-webkit-scrollbar-track { background: #0f172a; }
 
         /* --- Glassmorphism --- */
         .glass-panel {
-            /* Light mode glass */
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(0, 0, 0, 0.05);
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
-        
         .dark .glass-panel {
-            /* Dark mode glass - Increased border opacity for definition */
             background: rgba(15, 23, 42, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -109,58 +94,70 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
-
         .dark .nav-glass {
             background: rgba(2, 6, 23, 0.85);
             border-bottom: 1px solid rgba(34, 211, 238, 0.1);
         }
 
         /* --- Typography & Gradients --- */
-        
-        /* Robust Name Gradient Class */
         .name-highlight {
-            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%); /* Blue-600 to Indigo-600 (Light Mode) */
+            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             color: transparent;
         }
-
         .dark .name-highlight {
-            background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%); /* Cyan-400 to Blue-500 (Dark Mode) */
+            background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             color: transparent;
         }
 
-        /* Standard Text Gradient for other elements */
         .text-gradient {
-            background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%); /* Blue for light */
+            background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .dark .text-gradient {
-            background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%); /* Cyan for dark */
+            background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
         }
 
-        /* --- Timeline (Experience) --- */
+        /* --- Timeline: styled as a live PCB trace with current flowing down it --- */
         .timeline-line {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            width: 2px;
+            width: 3px;
             height: 100%;
-            background: linear-gradient(to bottom, transparent, #3b82f6, transparent); /* Blue for light */
+            background-image: repeating-linear-gradient(
+                to bottom,
+                rgba(37, 99, 235, 0.35) 0px,
+                rgba(37, 99, 235, 0.35) 6px,
+                transparent 6px,
+                transparent 14px
+            );
+            background-size: 3px 28px;
+            animation: current-flow 1.1s linear infinite;
+            mask-image: linear-gradient(to bottom, transparent, black 8%, black 92%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 8%, black 92%, transparent);
         }
         .dark .timeline-line {
-            background: linear-gradient(to bottom, transparent, #22d3ee, transparent); /* Cyan for dark */
+            background-image: repeating-linear-gradient(
+                to bottom,
+                rgba(34, 211, 238, 0.45) 0px,
+                rgba(34, 211, 238, 0.45) 6px,
+                transparent 6px,
+                transparent 14px
+            );
         }
-        
+        @keyframes current-flow {
+            to { background-position: 0 28px; }
+        }
+
         @media (max-width: 768px) {
-            .timeline-line {
-                left: 20px;
-            }
+            .timeline-line { left: 20px; }
         }
 
         /* --- Animations --- */
@@ -174,9 +171,7 @@
             transform: translateY(0);
         }
 
-        .hover-card {
-            transition: all 0.3s ease;
-        }
+        .hover-card { transition: all 0.3s ease; }
         .hover-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
@@ -186,17 +181,63 @@
             border-color: rgba(34, 211, 238, 0.3);
         }
 
-        /* Cursor */
-        .cursor-blink {
-            animation: blink 1s step-end infinite;
+        .cursor-blink { animation: blink 1s step-end infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* --- Component-style skill chips (resistor/IC lead look) --- */
+        .chip-component {
+            position: relative;
+            font-family: 'Space Grotesk', monospace;
+            letter-spacing: 0.02em;
         }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        .chip-component::before,
+        .chip-component::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 6px;
+            height: 2px;
+            background: currentColor;
+            opacity: 0.45;
+            transform: translateY(-50%);
+        }
+        .chip-component::before { left: -6px; }
+        .chip-component::after { right: -6px; }
+
+        /* --- Status LED --- */
+        @keyframes led-pulse {
+            0%, 100% { box-shadow: 0 0 3px 1px currentColor; opacity: 1; }
+            50% { box-shadow: 0 0 9px 3px currentColor; opacity: 0.65; }
+        }
+        .led-dot { animation: led-pulse 2s ease-in-out infinite; }
+
+        /* --- Hero oscilloscope trace --- */
+        .scope-path {
+            stroke-dasharray: 6 5;
+            animation: scope-flow 1.3s linear infinite;
+        }
+        @keyframes scope-flow {
+            to { stroke-dashoffset: -22; }
+        }
+
+        /* --- Accessibility: keyboard focus --- */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid #f59e0b;
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* --- Reduced motion --- */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { transition: none !important; }
+            .animate-pulse-slow, .animate-float, .animate-bounce { animation: none !important; }
+            .timeline-line { animation: none !important; }
+            .led-dot { animation: none !important; }
+            .scope-path { animation: none !important; }
         }
     </style>
 </head>
-<body class="antialiased bg-slate-50 text-slate-800 dark:bg-[#020617] dark:text-e2e8f0 transition-colors duration-300">
+<body class="antialiased bg-slate-50 text-slate-800 dark:bg-[#020617] dark:text-slate-200 transition-colors duration-300">
 
     <!-- Interactive Background -->
     <canvas id="canvas-bg"></canvas>
@@ -213,15 +254,14 @@
                 <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
                     <a href="#about" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">ABOUT</a>
                     <a href="#skills" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">SKILLS</a>
+                    <a href="#education" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">EDUCATION</a>
                     <a href="#experience" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">EXPERIENCE</a>
                     <a href="#projects" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">PROJECTS</a>
                 </nav>
 
                 <!-- Theme Toggle Button -->
                 <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
-                    <!-- Sun Icon (for Dark Mode) -->
                     <i data-lucide="sun" class="w-5 h-5 text-yellow-400 hidden dark:block"></i>
-                    <!-- Moon Icon (for Light Mode) -->
                     <i data-lucide="moon" class="w-5 h-5 text-slate-600 block dark:hidden"></i>
                 </button>
 
@@ -231,7 +271,7 @@
                 </a>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-toggle" class="md:hidden text-slate-800 dark:text-white focus:outline-none">
+                <button id="mobile-toggle" class="md:hidden text-slate-800 dark:text-white focus:outline-none" aria-label="Open menu">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
@@ -239,11 +279,12 @@
 
         <!-- Mobile Menu Overlay -->
         <div id="mobile-menu" class="fixed inset-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl z-40 transform translate-x-full transition-transform duration-300 flex flex-col justify-center items-center space-y-8 md:hidden">
-            <button id="mobile-close" class="absolute top-6 right-6 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+            <button id="mobile-close" class="absolute top-6 right-6 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white" aria-label="Close menu">
                 <i data-lucide="x" class="w-8 h-8"></i>
             </button>
             <a href="#about" class="text-2xl text-slate-800 dark:text-white font-light mobile-link">About</a>
             <a href="#skills" class="text-2xl text-slate-800 dark:text-white font-light mobile-link">Skills</a>
+            <a href="#education" class="text-2xl text-slate-800 dark:text-white font-light mobile-link">Education</a>
             <a href="#experience" class="text-2xl text-slate-800 dark:text-white font-light mobile-link">Experience</a>
             <a href="#projects" class="text-2xl text-slate-800 dark:text-white font-light mobile-link">Projects</a>
             <a href="mailto:aadilvahora05@gmail.com" class="text-cyan-600 dark:text-cyan-400 text-xl font-bold mobile-link">Connect With Me</a>
@@ -252,25 +293,34 @@
 
     <main>
         <!-- Hero Section -->
-        <section id="hero" class="min-h-screen flex items-center justify-center relative pt-20">
+        <section id="hero" class="min-h-screen flex items-center justify-center relative pt-24 pb-12">
             <div class="container mx-auto px-6 text-center z-10">
-                <div class="inline-block mb-4 px-3 py-1 rounded-full bg-cyan-100 dark:bg-cyan-900/30 border border-cyan-200 dark:border-cyan-700/50 text-cyan-700 dark:text-cyan-300 text-xs font-mono tracking-widest uppercase animate-pulse-slow">
-                    Available for Work
+                <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/20 border border-amber-300 dark:border-amber-700/50 text-amber-700 dark:text-amber-300 text-xs font-mono tracking-widest uppercase">
+                    <span class="w-2 h-2 rounded-full bg-amber-500 led-dot" aria-hidden="true"></span>
+                    Now: Proposal &amp; Detail Engineer
                 </div>
                 
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight text-slate-900 dark:text-white">
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 tracking-tight text-slate-900 dark:text-white">
                     Hi, I'm <span class="name-highlight">Aadil Vahora</span>
                 </h1>
                 
-                <div class="h-16 md:h-20 mb-8 flex justify-center items-center">
-                    <span id="typewriter" class="text-2xl md:text-4xl text-slate-600 dark:text-slate-300 font-light font-mono"></span>
-                    <span class="cursor-blink w-1 h-8 md:h-10 bg-cyan-600 dark:bg-cyan-400 ml-2"></span>
+                <div class="min-h-[2.5rem] sm:min-h-[3rem] md:min-h-[4rem] mb-8 flex justify-center items-center px-4">
+                    <span id="typewriter" class="text-lg sm:text-2xl md:text-4xl text-slate-600 dark:text-slate-300 font-light font-mono text-center"></span>
+                    <span class="cursor-blink w-1 h-6 sm:h-8 md:h-10 bg-cyan-600 dark:bg-cyan-400 ml-2 shrink-0"></span>
                 </div>
 
-                <p class="max-w-2xl mx-auto text-slate-600 dark:text-slate-400 text-lg mb-10 leading-relaxed reveal">
-                    Bridging the gap between electrical systems and modern technology. 
-                    Specializing in <span class="text-slate-900 dark:text-white font-medium">EV Architecture</span>, <span class="text-slate-900 dark:text-white font-medium">Power Electronics</span>, and <span class="text-slate-900 dark:text-white font-medium">Power System Study</span>.
+                <p class="max-w-2xl mx-auto text-slate-600 dark:text-slate-400 text-base md:text-lg mb-8 leading-relaxed reveal px-2">
+                    Bridging electrical design and real-world industrial systems.
+                    Specializing in <span class="text-slate-900 dark:text-white font-medium">Power System Studies</span>, <span class="text-slate-900 dark:text-white font-medium">Panel &amp; Instrumentation Design</span>, and <span class="text-slate-900 dark:text-white font-medium">Process Automation</span>.
                 </p>
+
+                <div class="flex flex-col items-center gap-2 mb-8 reveal" aria-hidden="true">
+                    <svg viewBox="0 0 320 60" class="w-56 sm:w-64 md:w-80 h-auto opacity-80" preserveAspectRatio="none">
+                        <polyline class="scope-path text-amber-500 dark:text-amber-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            points="0,30 20,30 30,8 40,52 50,30 70,30 80,12 90,48 100,30 120,30 130,8 140,52 150,30 170,30 180,12 190,48 200,30 220,30 230,8 240,52 250,30 270,30 280,12 290,48 300,30 320,30" />
+                    </svg>
+                    <span class="font-mono text-[10px] md:text-xs tracking-[0.3em] text-slate-400 dark:text-slate-500 uppercase">415V &middot; 3&phi; &middot; 50Hz</span>
+                </div>
 
                 <div class="flex flex-col md:flex-row justify-center items-center gap-4 reveal">
                     <a href="#projects" class="group relative px-8 py-3 rounded-lg bg-cyan-600 text-white font-semibold overflow-hidden transition-all hover:bg-cyan-500 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] dark:hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]">
@@ -278,41 +328,40 @@
                     </a>
                     
                     <div class="flex items-center gap-5 mt-6 md:mt-0 px-6">
-                        <a href="https://linkedin.com/in/aadiil" target="_blank" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-transform hover:-translate-y-1"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
-                        <a href="https://github.com/aadilll2121" target="_blank" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-transform hover:-translate-y-1"><i data-lucide="github" class="w-6 h-6"></i></a>
-                        <a href="https://www.instagram.com/aadil_6355" target="_blank" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-transform hover:-translate-y-1"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                        <a href="https://linkedin.com/in/aadiil" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-transform hover:-translate-y-1" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                        <a href="https://github.com/aadilll2121" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-transform hover:-translate-y-1" aria-label="GitHub"><i data-lucide="github" class="w-6 h-6"></i></a>
+                        <a href="https://www.instagram.com/aadil_6355" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-transform hover:-translate-y-1" aria-label="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
                     </div>
                 </div>
             </div>
             
-            <!-- Scroll Indicator -->
             <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block text-slate-400 dark:text-slate-500">
                 <i data-lucide="chevrons-down" class="w-6 h-6"></i>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-24 bg-slate-100/50 dark:bg-slate-900/30">
+        <section id="about" class="py-20 md:py-24 bg-slate-100/50 dark:bg-slate-900/30">
             <div class="container mx-auto px-6">
-                <div class="max-w-4xl mx-auto glass-panel p-8 md:p-12 rounded-2xl reveal">
+                <div class="max-w-4xl mx-auto glass-panel p-6 sm:p-8 md:p-12 rounded-2xl reveal">
                     <div class="flex items-center gap-4 mb-8">
-                        <div class="p-3 bg-cyan-100 dark:bg-cyan-900/30 rounded-lg text-cyan-600 dark:text-cyan-400">
+                        <div class="p-3 bg-cyan-100 dark:bg-cyan-900/30 rounded-lg text-cyan-600 dark:text-cyan-400 shrink-0">
                             <i data-lucide="user" class="w-6 h-6"></i>
                         </div>
-                        <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Engineering The Future</h2>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Engineering The Future</h2>
                     </div>
-                    <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-6">
-                        I am a dedicated Electrical Engineering student at <strong class="text-slate-900 dark:text-white">Birla Vishvakarma Mahavidyalaya</strong>. My passion lies in dissecting complex power systems and reconstructing them for efficiency and sustainability.
+                    <p class="text-slate-600 dark:text-slate-400 text-base md:text-lg leading-relaxed mb-6">
+                        I'm an <strong class="text-slate-900 dark:text-white">Electrical &amp; Instrumentation Engineer</strong> at ABC Process Solutions Pvt. Ltd., where I work across proposal and detail engineering for industrial process plants — from techno-commercial estimates to panel design, instrumentation, and automation.
                     </p>
-                    <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
-                        Beyond the classroom, I get my hands dirty with <strong class="text-cyan-600 dark:text-cyan-400">MATLAB simulations</strong> and <strong class="text-cyan-600 dark:text-cyan-400">prototype development</strong>. Whether it's optimizing a battery management system or designing a cycloconverter, I approach every challenge with analytical precision and creative problem-solving.
+                    <p class="text-slate-600 dark:text-slate-400 text-base md:text-lg leading-relaxed">
+                        My background spans <strong class="text-cyan-600 dark:text-cyan-400">power system studies</strong> in ETAP, <strong class="text-cyan-600 dark:text-cyan-400">embedded control</strong> on STM32, and hands-on prototyping — whether that's coordinating relay protection for an industrial network or designing a cycloconverter from scratch. I graduated from Birla Vishvakarma Mahavidyalaya with Distinction, and I like problems that sit right at the intersection of hardware and rigor.
                     </p>
                 </div>
             </div>
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="py-24 relative overflow-hidden">
+        <section id="skills" class="py-20 md:py-24 relative overflow-hidden">
             <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center mb-16 reveal">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">Technical Arsenal</h2>
@@ -323,32 +372,35 @@
                     <!-- Software & Languages -->
                     <div class="reveal">
                         <h3 class="text-xl font-semibold mb-6 flex items-center gap-2 text-slate-800 dark:text-white">
-                            <i data-lucide="code-2" class="text-cyan-600 dark:text-cyan-400"></i> Simulation & Code
+                            <i data-lucide="code-2" class="text-cyan-600 dark:text-cyan-400"></i> Simulation &amp; Code
                         </h3>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">MATLAB/Simulink</span>
-                            <span class="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">ETAP</span>
-                            <span class="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">AutoCAD Electrical</span>
-                            <span class="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">STM32 CubeIDE</span>
-                            <span class="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">Proteus</span>
-                            <span class="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">C/C++</span>
-                            <span class="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">Python</span>
-                            <span class="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">SQL</span>
-                            <span class="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">HTML/CSS</span>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="chip-component px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md text-slate-700 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">MATLAB/Simulink</span>
+                            <span class="chip-component px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md text-slate-700 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">ETAP</span>
+                            <span class="chip-component px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md text-slate-700 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">AutoCAD Electrical</span>
+                            <span class="chip-component px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md text-slate-700 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">STM32 CubeIDE</span>
+                            <span class="chip-component px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md text-slate-700 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">Proteus</span>
+                            <span class="chip-component px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md text-slate-700 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">C/C++</span>
+                            <span class="chip-component px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md text-slate-700 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">Python</span>
+                            <span class="chip-component px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md text-slate-700 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">SQL</span>
+                            <span class="chip-component px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md text-slate-700 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">HTML/CSS</span>
                         </div>
                     </div>
 
                     <!-- Core Domains -->
                     <div class="reveal">
                         <h3 class="text-xl font-semibold mb-6 flex items-center gap-2 text-slate-800 dark:text-white">
-                            <i data-lucide="cpu" class="text-cyan-600 dark:text-cyan-400"></i> Core Competencies
+                            <i data-lucide="cpu" class="text-amber-600 dark:text-amber-400"></i> Core Competencies
                         </h3>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="px-4 py-2 bg-cyan-50 dark:bg-cyan-900/20 border border-cyan-200 dark:border-cyan-800 rounded-lg text-cyan-800 dark:text-cyan-200 shadow-sm dark:shadow-none">EV Technology</span>
-                            <span class="px-4 py-2 bg-cyan-50 dark:bg-cyan-900/20 border border-cyan-200 dark:border-cyan-800 rounded-lg text-cyan-800 dark:text-cyan-200 shadow-sm dark:shadow-none">Power System Analysis</span>
-                            <span class="px-4 py-2 bg-cyan-50 dark:bg-cyan-900/20 border border-cyan-200 dark:border-cyan-800 rounded-lg text-cyan-800 dark:text-cyan-200 shadow-sm dark:shadow-none">Relay Coordination</span>
-                            <span class="px-4 py-2 bg-cyan-50 dark:bg-cyan-900/20 border border-cyan-200 dark:border-cyan-800 rounded-lg text-cyan-800 dark:text-cyan-200 shadow-sm dark:shadow-none">Circuit Design</span>
-                            <span class="px-4 py-2 bg-cyan-50 dark:bg-cyan-900/20 border border-cyan-200 dark:border-cyan-800 rounded-lg text-cyan-800 dark:text-cyan-200 shadow-sm dark:shadow-none">Microcontrollers</span>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="chip-component px-4 py-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-md text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">Power System Analysis</span>
+                            <span class="chip-component px-4 py-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-md text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">Relay Coordination</span>
+                            <span class="chip-component px-4 py-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-md text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">Panel Design (MCC/PCC/VFD)</span>
+                            <span class="chip-component px-4 py-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-md text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">Instrumentation &amp; P&amp;ID</span>
+                            <span class="chip-component px-4 py-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-md text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">SCADA &amp; PLC (TIA Portal)</span>
+                            <span class="chip-component px-4 py-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-md text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">Circuit Design</span>
+                            <span class="chip-component px-4 py-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-md text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">Microcontrollers</span>
+                            <span class="chip-component px-4 py-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-md text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">EV Technology</span>
                         </div>
                     </div>
                 </div>
@@ -356,33 +408,33 @@
         </section>
 
          <!-- Education & Certifications Section -->
-         <section id="education" class="py-24 bg-slate-100/50 dark:bg-slate-900/30">
+         <section id="education" class="py-20 md:py-24 bg-slate-100/50 dark:bg-slate-900/30">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">Education & Certifications</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">Education &amp; Certifications</h2>
                     <div class="w-20 h-1 bg-cyan-500 mx-auto rounded-full"></div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     <!-- Degree -->
-                    <div class="glass-panel p-8 rounded-2xl hover-card reveal">
+                    <div class="glass-panel p-6 sm:p-8 rounded-2xl hover-card reveal">
                         <div class="flex items-start gap-4">
-                            <div class="p-3 bg-cyan-100 dark:bg-cyan-900/30 rounded-lg text-cyan-600 dark:text-cyan-400">
+                            <div class="p-3 bg-cyan-100 dark:bg-cyan-900/30 rounded-lg text-cyan-600 dark:text-cyan-400 shrink-0">
                                 <i data-lucide="graduation-cap" class="w-8 h-8"></i>
                             </div>
                             <div>
                                 <h3 class="text-xl font-bold text-slate-900 dark:text-white">B.Tech in Electrical Engineering</h3>
                                 <p class="text-slate-600 dark:text-slate-400 mt-1">Birla Vishvakarma Mahavidyalaya</p>
-                                <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">July 2022 - Present | CPI: 6.51</p>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">July 2022 - June 2026 | CPI: 7.10 (Distinction)</p>
                                 <p class="text-sm text-slate-500 dark:text-slate-400">Vallabh Vidyanagar, Gujarat</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Certifications -->
-                    <div class="glass-panel p-8 rounded-2xl hover-card reveal">
+                    <div class="glass-panel p-6 sm:p-8 rounded-2xl hover-card reveal">
                         <div class="flex items-start gap-4">
-                            <div class="p-3 bg-cyan-100 dark:bg-cyan-900/30 rounded-lg text-cyan-600 dark:text-cyan-400">
+                            <div class="p-3 bg-cyan-100 dark:bg-cyan-900/30 rounded-lg text-cyan-600 dark:text-cyan-400 shrink-0">
                                 <i data-lucide="award" class="w-8 h-8"></i>
                             </div>
                             <div class="w-full">
@@ -405,7 +457,7 @@
         </section>
 
         <!-- Experience Timeline -->
-        <section id="experience" class="py-24">
+        <section id="experience" class="py-20 md:py-24">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 reveal">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">Professional Journey</h2>
@@ -413,66 +465,80 @@
                 </div>
 
                 <div class="relative max-w-3xl mx-auto">
-                    <!-- Vertical Line -->
+                    <!-- Vertical "live" trace -->
                     <div class="timeline-line"></div>
 
-                    <!-- Item 1: Elcon (Latest) -->
-                    <div class="relative mb-12 md:pl-0 md:pr-0 reveal">
+                    <!-- Item 0: ABC Process Solutions (Latest) -->
+                    <div class="relative mb-12 reveal">
                         <div class="md:flex items-center justify-between group">
-                            <!-- Dot -->
-                            <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform"></div>
+                            <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-amber-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform led-dot"></div>
                             
-                            <!-- Content Box -->
                             <div class="ml-10 md:ml-0 md:w-[45%] md:mr-auto glass-panel p-6 rounded-xl hover-card md:text-right">
-                                <span class="text-cyan-600 dark:text-cyan-400 font-mono text-sm">December 2025 - Present</span>
-                                <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">Project Intern</h3>
-                                <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">Elcon Engineers Pvt. Ltd., Vadodara</p>
+                                <span class="text-amber-600 dark:text-amber-400 font-mono text-sm">June 2026 - Present</span>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">Proposal Engineer &ndash; Electrical &amp; Instrumentation</h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">ABC Process Solutions Pvt. Ltd., Anand</p>
                                 <ul class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed list-none space-y-2 text-left md:text-right">
-                                    <li>Developing detailed ETAP models to simulate industrial electrical networks.</li>
-                                    <li>Conducting Load Flow Analysis, Short Circuit Analysis, and Relay Coordination.</li>
+                                    <li>Preparing techno-commercial proposals &amp; cost estimates for E&amp;I automation projects.</li>
+                                    <li>Reviewing tender documents and specs to support compliant bid submissions.</li>
+                                    <li>Supporting equipment selection, BOM preparation, and cost estimation.</li>
+                                    <li>Assisting with detail engineering documentation and pre-bid technical discussions.</li>
                                 </ul>
                             </div>
-                            <div class="hidden md:block md:w-[45%]"></div> <!-- Spacer -->
+                            <div class="hidden md:block md:w-[45%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Item 1: Elcon -->
+                    <div class="relative mb-12 reveal">
+                        <div class="md:flex items-center justify-between flex-row-reverse group">
+                            <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform"></div>
+                            
+                            <div class="ml-10 md:ml-0 md:w-[45%] md:ml-auto glass-panel p-6 rounded-xl hover-card">
+                                <span class="text-cyan-600 dark:text-cyan-400 font-mono text-sm">December 2025 - April 2026</span>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">Project Intern</h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">Elcon Engineers Pvt. Ltd., Vadodara</p>
+                                <ul class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed list-disc pl-5 space-y-2">
+                                    <li>Engineered a complete ETAP model of an industrial distribution network &ndash; SLD design through full implementation with real component data.</li>
+                                    <li>Conducted Load Flow, Short Circuit, Relay Coordination, and Arc Flash studies; delivered an interactive web-based simulation of the results.</li>
+                                </ul>
+                            </div>
+                            <div class="hidden md:block md:w-[45%]"></div>
                         </div>
                     </div>
 
                     <!-- Item 2: EV Tech -->
-                    <div class="relative mb-12 md:pl-0 md:pr-0 reveal">
-                        <div class="md:flex items-center justify-between flex-row-reverse group">
-                            <!-- Dot -->
+                    <div class="relative mb-12 reveal">
+                        <div class="md:flex items-center justify-between group">
                             <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform"></div>
                             
-                            <!-- Content Box -->
-                            <div class="ml-10 md:ml-0 md:w-[45%] md:ml-auto glass-panel p-6 rounded-xl hover-card">
+                            <div class="ml-10 md:ml-0 md:w-[45%] md:mr-auto glass-panel p-6 rounded-xl hover-card md:text-right">
                                 <span class="text-cyan-600 dark:text-cyan-400 font-mono text-sm">June 2025 - July 2025</span>
                                 <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">EV Technology Intern</h3>
                                 <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">BVM Engg. College (IEI Organized)</p>
-                                <ul class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed list-disc pl-5 space-y-2">
-                                    <li>Explored EV history, battery technologies, and performed MATLAB simulations.</li>
-                                    <li>Received training on microcontrollers, BLDC/PMSM motors, and BMS.</li>
-                                    <li>Hands-on E-BAJA car wiring.</li>
+                                <ul class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed list-none space-y-2 text-left md:text-right">
+                                    <li>Explored EV history, electronic components, and battery technologies through MATLAB simulations.</li>
+                                    <li>Trained on microcontrollers, EV simulators, BLDC/PMSM motors, and Battery Management Systems (BMS).</li>
+                                    <li>Hands-on wiring experience on the E-BAJA car.</li>
                                 </ul>
                             </div>
-                            <div class="hidden md:block md:w-[45%]"></div> <!-- Spacer -->
+                            <div class="hidden md:block md:w-[45%]"></div>
                         </div>
                     </div>
 
                     <!-- Item 3: Akaaish -->
                     <div class="relative mb-12 reveal">
-                        <div class="md:flex items-center justify-between group">
-                            <!-- Dot -->
+                        <div class="md:flex items-center justify-between flex-row-reverse group">
                             <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform"></div>
                             
-                            <!-- Content Box -->
-                            <div class="ml-10 md:ml-0 md:w-[45%] md:mr-auto glass-panel p-6 rounded-xl hover-card md:text-right">
+                            <div class="ml-10 md:ml-0 md:w-[45%] md:ml-auto glass-panel p-6 rounded-xl hover-card">
                                 <span class="text-cyan-600 dark:text-cyan-400 font-mono text-sm">June 2024 - July 2024</span>
                                 <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">Summer Intern</h3>
                                 <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">Akaaish Mechatronics (Elecon Unit)</p>
-                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed text-left md:text-right">
+                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                                   Gained practical exposure to 66/11kV Substation layouts, specifically analyzing Transformers, Circuit Breakers, and Isolator operations.
                                 </p>
                             </div>
-                            <div class="hidden md:block md:w-[45%]"></div> <!-- Spacer -->
+                            <div class="hidden md:block md:w-[45%]"></div>
                         </div>
                     </div>
                 </div>
@@ -480,7 +546,7 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="py-24 bg-slate-100/50 dark:bg-slate-900/30">
+        <section id="projects" class="py-20 md:py-24 bg-slate-100/50 dark:bg-slate-900/30">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 reveal">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">Featured Projects</h2>
@@ -488,60 +554,62 @@
                 </div>
 
                 <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Project Card 0: ETAP (In Progress) - SPANS FULL WIDTH -->
+                    <!-- Project Card 0: ETAP (Completed) - SPANS FULL WIDTH -->
                     <div class="glass-panel rounded-2xl overflow-hidden hover-card reveal relative md:col-span-2">
-                        <!-- Badge for In Progress -->
-                        <div class="absolute top-4 right-4 px-3 py-1 bg-yellow-500/20 text-yellow-600 dark:text-yellow-400 text-xs font-bold rounded-full border border-yellow-500/50 z-10 animate-pulse">
-                            IN PROGRESS
+                        <div class="absolute top-4 right-4 px-3 py-1 bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-xs font-bold rounded-full border border-emerald-500/50 z-10">
+                            COMPLETED
                         </div>
-                        <div class="h-48 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center border-b border-slate-200 dark:border-slate-700 relative group">
+                        <div class="h-40 sm:h-48 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center border-b border-slate-200 dark:border-slate-700 relative group">
                             <div class="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            <i data-lucide="activity" class="w-16 h-16 text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-500"></i>
+                            <i data-lucide="activity" class="w-14 h-14 sm:w-16 sm:h-16 text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-500"></i>
                         </div>
-                        <div class="p-8">
-                            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">Industrial Power System Studies</h3>
-                            <div class="flex gap-2 mb-4 text-xs font-mono">
+                        <div class="p-6 sm:p-8">
+                            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">Industrial Power System Studies</h3>
+                            <div class="flex gap-2 mb-4 text-xs font-mono flex-wrap">
                                 <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-cyan-300">ETAP</span>
                                 <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-cyan-300">Power Analysis</span>
                             </div>
-                            <p class="text-slate-600 dark:text-slate-400 mb-6">
-                                Currently executing at Elcon Engineers Pvt. Ltd., this project involves developing comprehensive ETAP models for industrial distribution networks. Key activities include conducting Load Flow, Short Circuit, and Arc Flash analysis to validate protection schemes and ensure system stability.
+                            <p class="text-slate-600 dark:text-slate-400 mb-2">
+                                Executed during a project internship at Elcon Engineers Pvt. Ltd. Engineered a complete ETAP model of an industrial distribution network, from SLD design through full implementation with real-world component data.
+                            </p>
+                            <p class="text-slate-600 dark:text-slate-400">
+                                Validated the network through Load Flow, Short Circuit, Relay Coordination, and Arc Flash analysis, then delivered the results as an interactive web-based simulation.
                             </p>
                         </div>
                     </div>
 
                     <!-- Project Card 1: Open Loop -->
                     <div class="glass-panel rounded-2xl overflow-hidden hover-card reveal">
-                        <div class="h-48 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center border-b border-slate-200 dark:border-slate-700 relative group">
+                        <div class="h-40 sm:h-48 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center border-b border-slate-200 dark:border-slate-700 relative group">
                             <div class="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            <i data-lucide="cpu" class="w-16 h-16 text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-500"></i>
+                            <i data-lucide="cpu" class="w-14 h-14 sm:w-16 sm:h-16 text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-500"></i>
                         </div>
-                        <div class="p-8">
-                            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">Open Loop IPMSM Motor Drive Control</h3>
-                            <div class="flex gap-2 mb-4 text-xs font-mono">
+                        <div class="p-6 sm:p-8">
+                            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">Open Loop IPMSM Motor Drive Control</h3>
+                            <div class="flex gap-2 mb-4 text-xs font-mono flex-wrap">
                                 <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-cyan-300">Embedded C</span>
                                 <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-cyan-300">STM32</span>
                             </div>
-                            <p class="text-slate-600 dark:text-slate-400 mb-6">
-                                Developed and implemented embedded C firmware on an STM32 Microcontroller. Successfully interfaced with a 3-phase inverter driver to achieve stable motor rotation.
+                            <p class="text-slate-600 dark:text-slate-400">
+                                Developed and implemented embedded C firmware on an STM32 microcontroller for open-loop control. Interfaced the MCU with a 3-phase inverter driver and achieved stable motor rotation at constant reference speeds.
                             </p>
                         </div>
                     </div>
 
                     <!-- Project Card 2: Cycloconverter -->
                     <div class="glass-panel rounded-2xl overflow-hidden hover-card reveal">
-                        <div class="h-48 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center border-b border-slate-200 dark:border-slate-700 relative group">
+                        <div class="h-40 sm:h-48 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center border-b border-slate-200 dark:border-slate-700 relative group">
                             <div class="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            <i data-lucide="zap" class="w-16 h-16 text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-500"></i>
+                            <i data-lucide="zap" class="w-14 h-14 sm:w-16 sm:h-16 text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-500"></i>
                         </div>
-                        <div class="p-8">
-                            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">Cycloconverter Technologies</h3>
-                            <div class="flex gap-2 mb-4 text-xs font-mono">
+                        <div class="p-6 sm:p-8">
+                            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">Cycloconverter Technologies</h3>
+                            <div class="flex gap-2 mb-4 text-xs font-mono flex-wrap">
                                 <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-cyan-300">MATLAB</span>
                                 <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-cyan-300">Arduino</span>
                             </div>
-                            <p class="text-slate-600 dark:text-slate-400 mb-6">
-                                Designed a proof-of-concept cycloconverter to step down 220V to 12V using SCRs and an Optocoupler. Created functional simulation in MATLAB.
+                            <p class="text-slate-600 dark:text-slate-400">
+                                Designed a proof-of-concept cycloconverter to step down 220V to 12V using SCRs and an optocoupler. Created a functional simulation in MATLAB with control logic implemented on an Arduino UNO.
                             </p>
                         </div>
                     </div>
@@ -551,35 +619,35 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white dark:bg-slate-950 pt-20 pb-10 border-t border-slate-200 dark:border-slate-900">
+    <footer class="bg-white dark:bg-slate-950 pt-16 md:pt-20 pb-10 border-t border-slate-200 dark:border-slate-900">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6">Let's Electrify The World</h2>
-            <p class="text-slate-600 dark:text-slate-400 mb-10 max-w-lg mx-auto">Open for internships and collaborative projects. Feel free to reach out.</p>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-6">Let's Electrify The World</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-10 max-w-lg mx-auto">Open for collaborations and interesting problems in power systems, instrumentation, and automation. Feel free to reach out.</p>
             
             <a href="mailto:aadilvahora05@gmail.com" class="inline-block bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-full transition-transform hover:scale-105 mb-12 shadow-lg shadow-cyan-500/25">
                 Get In Touch
             </a>
 
             <div class="flex justify-center gap-8 mb-8 items-center">
-                <a href="https://linkedin.com/in/aadiil" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
-                <a href="https://github.com/aadilll2121" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform"><i data-lucide="github" class="w-6 h-6"></i></a>
-                <a href="tel:+916355069723" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform" title="+91 63550 69723"><i data-lucide="phone" class="w-6 h-6"></i></a>
-                <a href="https://www.instagram.com/aadil_6355" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                <a href="https://linkedin.com/in/aadiil" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                <a href="https://github.com/aadilll2121" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform" aria-label="GitHub"><i data-lucide="github" class="w-6 h-6"></i></a>
+                <a href="tel:+916355069723" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform" title="+91 63550 69723" aria-label="Phone"><i data-lucide="phone" class="w-6 h-6"></i></a>
+                <a href="https://www.instagram.com/aadil_6355" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform" aria-label="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
             </div>
             
-            <p class="text-slate-500 dark:text-slate-600 text-sm">© 2024 Aadil Vahora. Crafted with <i data-lucide="heart" class="w-3 h-3 inline text-red-500"></i> and Electrons.</p>
+            <p class="text-slate-500 dark:text-slate-600 text-sm">&copy; <span id="year"></span> Aadil Vahora. Crafted with <i data-lucide="heart" class="w-3 h-3 inline text-red-500"></i> and Electrons.</p>
         </div>
     </footer>
 
     <script>
         // --- 1. Initialize Icons ---
         lucide.createIcons();
+        document.getElementById('year').textContent = new Date().getFullYear();
 
         // --- 2. Dark/Light Mode Logic ---
         const themeToggleBtn = document.getElementById('theme-toggle');
         const htmlElement = document.documentElement;
         
-        // Check local storage or system preference
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             htmlElement.classList.add('dark');
         } else {
@@ -588,120 +656,151 @@
 
         themeToggleBtn.addEventListener('click', () => {
             htmlElement.classList.toggle('dark');
-            if (htmlElement.classList.contains('dark')) {
-                localStorage.theme = 'dark';
-            } else {
-                localStorage.theme = 'light';
-            }
+            localStorage.theme = htmlElement.classList.contains('dark') ? 'dark' : 'light';
         });
 
-        // --- 3. Canvas Particle Network Animation ---
+        // --- 3. Circuit Trace Background Animation ---
         const canvas = document.getElementById('canvas-bg');
         const ctx = canvas.getContext('2d');
         let width, height;
-        let particles = [];
-        const particleCount = window.innerWidth < 768 ? 40 : 80;
-        const connectionDistance = 150;
-        const mouseDistance = 200;
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        let mouse = { x: null, y: null };
+        let traces = [];
+        let pulses = [];
 
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.x;
-            mouse.y = e.y;
-        });
+        function traceLength(points) {
+            let len = 0;
+            for (let i = 1; i < points.length; i++) {
+                len += Math.hypot(points[i].x - points[i - 1].x, points[i].y - points[i - 1].y);
+            }
+            return len;
+        }
+
+        function pointAt(points, t) {
+            const total = traceLength(points);
+            let target = total * t;
+            for (let i = 1; i < points.length; i++) {
+                const segLen = Math.hypot(points[i].x - points[i - 1].x, points[i].y - points[i - 1].y);
+                if (target <= segLen || i === points.length - 1) {
+                    const ratio = segLen === 0 ? 0 : Math.min(1, target / segLen);
+                    return {
+                        x: points[i - 1].x + (points[i].x - points[i - 1].x) * ratio,
+                        y: points[i - 1].y + (points[i].y - points[i - 1].y) * ratio,
+                    };
+                }
+                target -= segLen;
+            }
+            return points[points.length - 1];
+        }
+
+        function buildTraces() {
+            traces = [];
+            const cols = Math.max(6, Math.floor(width / 160));
+            const rows = Math.max(4, Math.floor(height / 160));
+            const cellW = width / cols;
+            const cellH = height / rows;
+            const traceCount = window.innerWidth < 768 ? 12 : 24;
+
+            for (let i = 0; i < traceCount; i++) {
+                let x = Math.floor(Math.random() * cols) * cellW + cellW / 2;
+                let y = Math.floor(Math.random() * rows) * cellH + cellH / 2;
+                const points = [{ x, y }];
+                const segments = 2 + Math.floor(Math.random() * 3);
+                for (let s = 0; s < segments; s++) {
+                    if (Math.random() > 0.5) {
+                        x += (Math.random() > 0.5 ? 1 : -1) * cellW * (1 + Math.floor(Math.random() * 2));
+                    } else {
+                        y += (Math.random() > 0.5 ? 1 : -1) * cellH * (1 + Math.floor(Math.random() * 2));
+                    }
+                    x = Math.max(0, Math.min(width, x));
+                    y = Math.max(0, Math.min(height, y));
+                    points.push({ x, y });
+                }
+                traces.push(points);
+            }
+
+            pulses = traces
+                .filter(() => Math.random() > 0.35)
+                .map(points => ({
+                    points,
+                    t: Math.random(),
+                    speed: 0.0025 + Math.random() * 0.003,
+                    color: Math.random() > 0.5 ? 'accent1' : 'accent2',
+                }));
+        }
 
         function resize() {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
+            buildTraces();
         }
         window.addEventListener('resize', resize);
-        resize();
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.size = Math.random() * 2 + 1;
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
-
-                if (mouse.x != null) {
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
-                    let distance = Math.sqrt(dx*dx + dy*dy);
-                    if (distance < mouseDistance) {
-                        const forceDirectionX = dx / distance;
-                        const forceDirectionY = dy / distance;
-                        const force = (mouseDistance - distance) / mouseDistance;
-                        const directionX = forceDirectionX * force * this.size;
-                        const directionY = forceDirectionY * force * this.size;
-                        this.x -= directionX;
-                        this.y -= directionY;
-                    }
-                }
-            }
-
-            draw() {
-                // Change color based on theme
-                const isDark = htmlElement.classList.contains('dark');
-                const color = isDark ? '34, 211, 238' : '37, 99, 235'; // Cyan (Dark) vs Blue (Light)
-                
-                ctx.fillStyle = `rgba(${color}, 0.5)`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            
+        function getColors() {
             const isDark = htmlElement.classList.contains('dark');
-            const color = isDark ? '34, 211, 238' : '37, 99, 235'; // Cyan (Dark) vs Blue (Light)
-
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-
-                for (let j = i; j < particles.length; j++) {
-                    let dx = particles[i].x - particles[j].x;
-                    let dy = particles[i].y - particles[j].y;
-                    let distance = Math.sqrt(dx*dx + dy*dy);
-
-                    if (distance < connectionDistance) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(${color}, ${1 - distance/connectionDistance})`;
-                        ctx.lineWidth = 1;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animate);
+            return {
+                trace: isDark ? 'rgba(148, 163, 184, 0.14)' : 'rgba(100, 116, 139, 0.16)',
+                node: isDark ? 'rgba(148, 163, 184, 0.3)' : 'rgba(100, 116, 139, 0.35)',
+                accent1: isDark ? '34, 211, 238' : '37, 99, 235',
+                accent2: isDark ? '245, 158, 11' : '217, 119, 6',
+            };
         }
 
-        initParticles();
-        animate();
+        function drawTraces(colors) {
+            ctx.strokeStyle = colors.trace;
+            ctx.lineWidth = 1;
+            ctx.fillStyle = colors.node;
+            traces.forEach(points => {
+                ctx.beginPath();
+                ctx.moveTo(points[0].x, points[0].y);
+                for (let i = 1; i < points.length; i++) ctx.lineTo(points[i].x, points[i].y);
+                ctx.stroke();
+                points.forEach(p => {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, 1.8, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+            });
+        }
+
+        function drawPulses(colors) {
+            pulses.forEach(pulse => {
+                const pos = pointAt(pulse.points, pulse.t);
+                const rgb = colors[pulse.color];
+                const gradient = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, 8);
+                gradient.addColorStop(0, `rgba(${rgb}, 0.9)`);
+                gradient.addColorStop(1, `rgba(${rgb}, 0)`);
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.arc(pos.x, pos.y, 8, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = `rgba(${rgb}, 1)`;
+                ctx.beginPath();
+                ctx.arc(pos.x, pos.y, 2, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+
+        function animateCircuit() {
+            ctx.clearRect(0, 0, width, height);
+            const colors = getColors();
+            drawTraces(colors);
+            if (!prefersReducedMotion) {
+                pulses.forEach(pulse => {
+                    pulse.t += pulse.speed;
+                    if (pulse.t > 1) pulse.t = 0;
+                });
+            }
+            drawPulses(colors);
+            requestAnimationFrame(animateCircuit);
+        }
+
+        resize();
+        animateCircuit();
 
         // --- 4. Advanced Typewriter Effect ---
-        const phrases = ["Electrical Engineer.", "Focused on Rotating Machines & Power Conversion.", "Energized by Power Systems."];
+        const phrases = ["Electrical & Instrumentation Engineer.", "Panel Design. Automation. Power Systems.", "ETAP \u00B7 SCADA \u00B7 STM32."];
         const typeEl = document.getElementById('typewriter');
         let phraseIndex = 0;
         let charIndex = 0;
@@ -764,13 +863,6 @@
         btn.addEventListener('click', toggleMenu);
         closeBtn.addEventListener('click', toggleMenu);
         links.forEach(link => link.addEventListener('click', toggleMenu));
-
     </script>
 </body>
 </html>
-
-
-
-
-
-
