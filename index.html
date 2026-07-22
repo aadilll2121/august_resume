@@ -1,13 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0a0f1a">
-    <meta name="description" content="Portfolio of Aadil Vahora, an Electrical & Instrumentation Engineer specializing in Power Systems, Panel Design, Automation, and EV Technology.">
-    <meta name="keywords" content="Electrical Engineer, Instrumentation Engineer, Automation, SCADA, PLC, Power Systems, Proposal Engineering, Aadil Vahora, BVM Engineering, ETAP, STM32">
+    <meta name="description" content="Portfolio of Aadil Vahora, Proposal & Detail Engineer specializing in Electrical Systems, Industrial Automation, and Panel Design.">
+    <meta name="keywords" content="Electrical Engineer, Proposal Engineer, Instrumentation, Automation, SCADA, PLC, ETAP, Aadil Vahora, BVM Engineering">
     <meta name="author" content="Aadil Vahora">
-    <title>Aadil Vahora | Electrical & Instrumentation Engineer</title>
+    <title>Aadil Vahora | Proposal & Detail Engineer</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,7 +16,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -30,20 +31,25 @@
                         mono: ['Space Grotesk', 'monospace'],
                     },
                     colors: {
-                        electric: {
-                            400: '#22d3ee',
-                            500: '#06b6d4',
-                            600: '#0891b2',
+                        voltage: {
+                            400: '#38bdf8',
+                            550: '#06b6d4',
+                            600: '#0284c7',
                         }
                     },
                     animation: {
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'electric-arc': 'arc-glow 3s ease-in-out infinite',
+                        'current-flow': 'flow 4s linear infinite',
                     },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
+                        'arc-glow': {
+                            '0%, 100%': { filter: 'drop-shadow(0 0 2px rgba(6,182,212,0.4))' },
+                            '50%': { filter: 'drop-shadow(0 0 15px rgba(6,182,212,0.9))' }
+                        },
+                        'flow': {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '100%': { backgroundPosition: '100% 50%' }
                         }
                     }
                 }
@@ -56,584 +62,512 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* --- Ambient Liquid Background --- */
+        /* --- High Voltage Ambient Grid --- */
         .ambient-bg {
             position: fixed;
             inset: 0;
-            z-index: -1;
+            z-index: -2;
             overflow: hidden;
             pointer-events: none;
-            background: linear-gradient(180deg, #f1f5f9 0%, #e7edf5 100%);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
         }
         .dark .ambient-bg {
-            background: linear-gradient(180deg, #05070d 0%, #0a0f1a 100%);
+            background: linear-gradient(135deg, #030712 0%, #0a0f1d 50%, #020617 100%);
         }
-        .orb {
+
+        /* Lightning / Voltage Plasma Orbs */
+        .plasma-orb {
             position: absolute;
             border-radius: 9999px;
-            filter: blur(70px);
-            opacity: 0.5;
+            filter: blur(90px);
+            opacity: 0.35;
             will-change: transform;
+            animation: plasma-drift 20s ease-in-out infinite alternate;
         }
-        .orb-1 { width: 480px; height: 480px; top: -12%; left: -10%; background: radial-gradient(circle, rgba(34,211,238,0.55), transparent 70%); animation: drift1 28s ease-in-out infinite; }
-        .orb-2 { width: 420px; height: 420px; top: 15%; right: -15%; background: radial-gradient(circle, rgba(245,158,11,0.45), transparent 70%); animation: drift2 34s ease-in-out infinite; }
-        .orb-3 { width: 400px; height: 400px; bottom: -18%; left: 12%; background: radial-gradient(circle, rgba(59,130,246,0.4), transparent 70%); animation: drift3 30s ease-in-out infinite; }
-        .orb-4 { width: 320px; height: 320px; bottom: 8%; right: 8%; background: radial-gradient(circle, rgba(16,185,129,0.3), transparent 70%); animation: drift2 24s ease-in-out infinite reverse; }
-        @keyframes drift1 { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(60px, 40px) scale(1.1); } }
-        @keyframes drift2 { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-50px, 60px) scale(1.05); } }
-        @keyframes drift3 { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(40px, -50px) scale(1.08); } }
-        @media (prefers-reduced-motion: reduce) {
-            .orb { animation: none !important; }
+        .plasma-orb-1 { width: 45vw; height: 45vw; top: -10%; left: -10%; background: radial-gradient(circle, rgba(6,182,212,0.6), transparent 70%); }
+        .plasma-orb-2 { width: 40vw; height: 40vw; top: 30%; right: -15%; background: radial-gradient(circle, rgba(245,158,11,0.4), transparent 70%); animation-delay: -5s; }
+        .plasma-orb-3 { width: 50vw; height: 50vw; bottom: -20%; left: 20%; background: radial-gradient(circle, rgba(59,130,246,0.45), transparent 70%); animation-delay: -10s; }
+
+        @keyframes plasma-drift {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(4vw, 6vh) scale(1.12); }
+            100% { transform: translate(-3vw, -4vh) scale(0.95); }
         }
 
-        /* --- Scrollbar --- */
+        /* Circuit Blueprint Background Matrix */
+        .circuit-matrix {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background-size: 50px 50px;
+            background-image: 
+                linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at 50% 20%, black 20%, transparent 85%);
+            -webkit-mask-image: radial-gradient(circle at 50% 20%, black 20%, transparent 85%);
+        }
+        .dark .circuit-matrix {
+            background-image: 
+                linear-gradient(to right, rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+        }
+
+        /* Scrollbar styling */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        .dark ::-webkit-scrollbar-thumb { background: #22d3ee; }
-        .dark ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #06b6d4; border-radius: 4px; }
 
-        /* --- Liquid Glass material --- */
+        /* Liquid Glass Card */
         .glass-panel {
             position: relative;
-            background: rgba(255, 255, 255, 0.55);
+            background: rgba(255, 255, 255, 0.65);
             backdrop-filter: blur(24px) saturate(180%);
             -webkit-backdrop-filter: blur(24px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
-            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 40px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .glass-panel::before {
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+
+        /* Electrifying Hover Border */
+        .electric-card {
+            position: relative;
+        }
+        .electric-card::after {
             content: '';
             position: absolute;
             inset: 0;
             border-radius: inherit;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), transparent 45%);
+            padding: 2px;
+            background: linear-gradient(120deg, transparent 30%, #06b6d4 50%, #f59e0b 70%, transparent 90%);
+            background-size: 300% 300%;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
             pointer-events: none;
         }
-        .dark .glass-panel {
-            background: rgba(30, 41, 59, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        .electric-card:hover::after {
+            opacity: 1;
+            animation: current-flow 2.5s ease infinite;
         }
-        .dark .glass-panel::before {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 45%);
-        }
-
-        .nav-glass {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-        .dark .nav-glass {
-            background: rgba(15, 23, 42, 0.55);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        .electric-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -10px rgba(6, 182, 212, 0.25);
         }
 
-        /* --- Typography & Gradients --- */
-        .name-highlight {
-            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
-        }
-        .dark .name-highlight {
-            background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
+        @keyframes current-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        .text-gradient {
-            background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Glowing LEDs */
+        .live-led {
+            box-shadow: 0 0 12px currentColor;
+            animation: led-blink 2s ease-in-out infinite;
         }
-        .dark .text-gradient {
-            background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
+        @keyframes led-blink {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.9); }
         }
 
-        /* --- Timeline: a frosted glass tube with current flowing through it --- */
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 6px;
-            height: 100%;
-            border-radius: 9999px;
-            background: rgba(100, 116, 139, 0.18);
-            backdrop-filter: blur(4px);
-            overflow: hidden;
-            mask-image: linear-gradient(to bottom, transparent, black 8%, black 92%, transparent);
-            -webkit-mask-image: linear-gradient(to bottom, transparent, black 8%, black 92%, transparent);
+        /* High-Voltage IC Chips */
+        .ic-chip {
+            font-family: 'Space Grotesk', monospace;
+            background: linear-gradient(145deg, rgba(255,255,255,0.8), rgba(241,245,249,0.9));
+            border: 1px solid rgba(100,116,139,0.3);
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
         }
-        .dark .timeline-line {
-            background: rgba(148, 163, 184, 0.18);
+        .dark .ic-chip {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border-color: rgba(56, 189, 248, 0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        .timeline-line::after {
+        .ic-chip:hover {
+            border-color: #06b6d4;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.25);
+        }
+        /* IC Lead Pins */
+        .ic-chip::before, .ic-chip::after {
             content: '';
             position: absolute;
-            left: 0;
-            right: 0;
-            height: 160px;
-            border-radius: 9999px;
-            background: linear-gradient(to bottom, transparent, rgba(37, 99, 235, 0.9), rgba(245, 158, 11, 0.9), transparent);
-            filter: blur(3px);
-            animation: current-flow 3.6s ease-in-out infinite;
+            top: 2px; bottom: 2px; width: 3px;
+            background-image: repeating-linear-gradient(to bottom, #94a3b8, #94a3b8 3px, transparent 3px, transparent 6px);
         }
-        .dark .timeline-line::after {
-            background: linear-gradient(to bottom, transparent, rgba(34, 211, 238, 0.95), rgba(245, 158, 11, 0.95), transparent);
+        .ic-chip::before { left: -5px; }
+        .ic-chip::after { right: -5px; }
+
+        /* Oscilloscope Wave */
+        .scope-line {
+            stroke-dasharray: 10 6;
+            animation: scope-run 1.2s linear infinite;
         }
-        @keyframes current-flow {
-            0% { top: -25%; }
-            100% { top: 110%; }
+        @keyframes scope-run {
+            to { stroke-dashoffset: -32; }
         }
 
-        @media (max-width: 768px) {
-            .timeline-line { left: 20px; }
-        }
-
-        /* --- Animations --- */
+        /* Reveal Animation */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .hover-card { transition: all 0.3s ease; }
-        .hover-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
-        }
-        .dark .hover-card:hover {
-            box-shadow: 0 10px 30px -10px rgba(34, 211, 238, 0.3);
-            border-color: rgba(34, 211, 238, 0.3);
-        }
-
-        .cursor-blink { animation: blink 1s step-end infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-        /* --- Component-style skill chips (resistor/IC lead look) --- */
-        .chip-component {
-            position: relative;
-            font-family: 'Space Grotesk', monospace;
-            letter-spacing: 0.02em;
-        }
-        .chip-component::before,
-        .chip-component::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 6px;
-            height: 2px;
-            background: currentColor;
-            opacity: 0.45;
-            transform: translateY(-50%);
-        }
-        .chip-component::before { left: -6px; }
-        .chip-component::after { right: -6px; }
-
-        /* --- Liquid glass button sheen sweep --- */
-        .liquid-btn::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -75%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.55), transparent);
-            transform: skewX(-20deg);
-            transition: left 0.6s ease;
-            pointer-events: none;
-        }
-        .liquid-btn:hover::after { left: 125%; }
-        @media (prefers-reduced-motion: reduce) {
-            .liquid-btn::after { transition: none !important; left: 125%; }
-        }
-
-        /* --- Status LED --- */
-        @keyframes led-pulse {
-            0%, 100% { box-shadow: 0 0 3px 1px currentColor; opacity: 1; }
-            50% { box-shadow: 0 0 9px 3px currentColor; opacity: 0.65; }
-        }
-        .led-dot { animation: led-pulse 2s ease-in-out infinite; }
-
-        /* --- Hero oscilloscope trace --- */
-        .scope-path {
-            stroke-dasharray: 6 5;
-            animation: scope-flow 1.3s linear infinite;
-        }
-        @keyframes scope-flow {
-            to { stroke-dashoffset: -22; }
-        }
-
-        /* --- Accessibility: keyboard focus --- */
-        a:focus-visible, button:focus-visible {
-            outline: 2px solid #f59e0b;
-            outline-offset: 3px;
-            border-radius: 4px;
-        }
-
-        /* --- Scroll-spy: active section indicator (a little glowing wire under the current link) --- */
-        .nav-link, .mobile-link {
-            position: relative;
-        }
+        /* Active Nav Indicator */
         .nav-active {
-            color: #0891b2 !important;
+            color: #0284c7 !important;
+            font-weight: 700;
         }
         .dark .nav-active {
-            color: #22d3ee !important;
+            color: #38bdf8 !important;
         }
         .nav-link.nav-active::after {
             content: '';
             position: absolute;
-            left: 8%;
-            right: 8%;
-            bottom: -6px;
-            height: 2px;
-            border-radius: 9999px;
-            background: linear-gradient(90deg, #22d3ee, #f59e0b);
-            box-shadow: 0 0 6px rgba(34, 211, 238, 0.6);
-        }
-        .mobile-link.nav-active::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: -8px;
-            width: 28px;
-            height: 2px;
-            transform: translateX(-50%);
-            border-radius: 9999px;
-            background: linear-gradient(90deg, #22d3ee, #f59e0b);
-            box-shadow: 0 0 6px rgba(34, 211, 238, 0.6);
+            left: 10%; right: 10%; bottom: -4px; height: 2px;
+            background: linear-gradient(90deg, #38bdf8, #f59e0b);
+            box-shadow: 0 0 10px #38bdf8;
+            border-radius: 2px;
         }
 
-        /* --- Reduced motion --- */
-        @media (prefers-reduced-motion: reduce) {
-            .reveal { transition: none !important; }
-            .animate-pulse-slow, .animate-float, .animate-bounce { animation: none !important; }
-            .timeline-line::after { animation: none !important; }
-            .led-dot { animation: none !important; }
-            .scope-path { animation: none !important; }
+        /* Spark Button */
+        .spark-btn {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%);
+            transition: all 0.3s ease;
+        }
+        .spark-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+            transform: skewX(-20deg);
+            transition: left 0.6s ease;
+        }
+        .spark-btn:hover::before { left: 150%; }
+        .spark-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.6);
         }
     </style>
 </head>
-<body class="antialiased bg-slate-50 text-slate-800 dark:bg-[#020617] dark:text-slate-200 transition-colors duration-300">
+<body class="antialiased bg-slate-50 text-slate-800 dark:bg-[#020617] dark:text-slate-200">
 
-    <!-- Ambient Liquid Background -->
+    <!-- Ambient Plasma & Circuit Background -->
     <div class="ambient-bg" aria-hidden="true">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-        <div class="orb orb-4"></div>
+        <div class="plasma-orb plasma-orb-1"></div>
+        <div class="plasma-orb plasma-orb-2"></div>
+        <div class="plasma-orb plasma-orb-3"></div>
     </div>
+    <div class="circuit-matrix" aria-hidden="true"></div>
 
-    <!-- Navigation -->
-    <header class="fixed top-3 sm:top-4 inset-x-0 z-50 transition-all duration-300" id="navbar">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3">
-            <!-- Logo capsule -->
-            <a href="#" class="nav-glass rounded-full px-5 py-3 text-2xl font-bold font-mono tracking-tighter hover:text-cyan-600 dark:hover:text-cyan-400 text-slate-900 dark:text-slate-100 transition-colors shrink-0">
-                AV<span class="text-cyan-600 dark:text-cyan-400">.</span>
+    <!-- Navigation Bar -->
+    <header class="fixed top-3 sm:top-5 inset-x-0 z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3 relative">
+            
+            <!-- Logo Capsule -->
+            <a href="#" class="glass-panel rounded-full px-5 py-2.5 text-2xl font-black font-mono tracking-tighter text-slate-900 dark:text-white flex items-center gap-2">
+                <i data-lucide="zap" class="w-5 h-5 text-amber-500 fill-amber-500 animate-pulse"></i>
+                AV<span class="text-cyan-500">.</span>
             </a>
 
-            <!-- Desktop Nav capsule -->
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide nav-glass rounded-full px-8 py-3">
-                <a href="#about" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">ABOUT</a>
-                <a href="#skills" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">SKILLS</a>
-                <a href="#education" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">EDUCATION</a>
-                <a href="#experience" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">EXPERIENCE</a>
-                <a href="#projects" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">PROJECTS</a>
+            <!-- Desktop Links -->
+            <nav class="hidden md:flex items-center space-x-7 text-xs font-semibold tracking-widest glass-panel rounded-full px-8 py-3 shadow-xl">
+                <a href="#about" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors uppercase">About</a>
+                <a href="#proposal" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors uppercase">Proposal &amp; E&amp;I</a>
+                <a href="#skills" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors uppercase">Skills</a>
+                <a href="#experience" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors uppercase">Journey</a>
+                <a href="#projects" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors uppercase">Projects</a>
             </nav>
 
-            <!-- Controls capsule -->
-            <div class="nav-glass rounded-full px-3 py-2 flex items-center gap-3 shrink-0">
-                <!-- Theme Toggle Button -->
-                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200/60 dark:hover:bg-slate-800/60 transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
-                    <i data-lucide="sun" class="w-5 h-5 text-yellow-400 hidden dark:block"></i>
-                    <i data-lucide="moon" class="w-5 h-5 text-slate-600 block dark:hidden"></i>
+            <!-- Right Controls -->
+            <div class="glass-panel rounded-full px-2.5 py-2 flex items-center gap-2 shrink-0 z-20 shadow-xl">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200/80 dark:hover:bg-slate-800/80 transition-colors focus:outline-none" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="w-5 h-5 text-amber-400 hidden dark:block"></i>
+                    <i data-lucide="moon" class="w-5 h-5 text-slate-700 block dark:hidden"></i>
                 </button>
 
-                <!-- Connect With Me Button (Desktop) -->
-                <a href="mailto:aadilvahora05@gmail.com" class="hidden md:inline-block px-5 py-2 rounded-full border border-cyan-600 dark:border-cyan-500 text-cyan-600 dark:text-cyan-400 hover:bg-cyan-50 dark:hover:bg-cyan-500/10 font-medium transition-all uppercase text-xs tracking-wider">
-                    Connect With Me
+                <!-- WhatsApp Quick CTA -->
+                <a href="https://wa.me/916355069723?text=Hi%20Aadil,%20I%20visited%20your%20proposal%20engineering%20portfolio!" target="_blank" rel="noopener" class="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs tracking-wider transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                    <i data-lucide="message-square" class="w-3.5 h-3.5"></i> WhatsApp
                 </a>
 
-                <!-- Mobile Menu Button -->
                 <button id="mobile-toggle" class="md:hidden p-2 text-slate-800 dark:text-white focus:outline-none" aria-label="Open menu">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
+
+            <!-- Mobile Dropdown Menu -->
+            <div id="mobile-menu" class="absolute top-full right-4 sm:right-6 mt-3 w-56 glass-panel rounded-3xl py-4 flex flex-col space-y-1 origin-top-right transition-all duration-300 opacity-0 invisible scale-95 md:hidden z-10 shadow-2xl">
+                <a href="#about" class="px-6 py-2.5 text-slate-800 dark:text-slate-200 hover:bg-cyan-50 dark:hover:bg-cyan-900/20 font-semibold mobile-link text-center rounded-lg mx-2 transition-colors">About</a>
+                <a href="#proposal" class="px-6 py-2.5 text-slate-800 dark:text-slate-200 hover:bg-cyan-50 dark:hover:bg-cyan-900/20 font-semibold mobile-link text-center rounded-lg mx-2 transition-colors">Proposal &amp; E&amp;I</a>
+                <a href="#skills" class="px-6 py-2.5 text-slate-800 dark:text-slate-200 hover:bg-cyan-50 dark:hover:bg-cyan-900/20 font-semibold mobile-link text-center rounded-lg mx-2 transition-colors">Skills</a>
+                <a href="#experience" class="px-6 py-2.5 text-slate-800 dark:text-slate-200 hover:bg-cyan-50 dark:hover:bg-cyan-900/20 font-semibold mobile-link text-center rounded-lg mx-2 transition-colors">Journey</a>
+                <a href="#projects" class="px-6 py-2.5 text-slate-800 dark:text-slate-200 hover:bg-cyan-50 dark:hover:bg-cyan-900/20 font-semibold mobile-link text-center rounded-lg mx-2 transition-colors">Projects</a>
+                <div class="px-4 pt-3 mt-2 border-t border-slate-200/50 dark:border-slate-700/50 flex flex-col gap-2">
+                    <a href="https://wa.me/916355069723" target="_blank" rel="noopener" class="flex justify-center items-center gap-2 py-2.5 rounded-full bg-emerald-600 text-white font-bold text-xs shadow-md">
+                        <i data-lucide="message-square" class="w-4 h-4"></i> WhatsApp Me
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
 
-    <!-- Mobile Menu Overlay (kept as a direct child of body — a transformed ancestor would break position:fixed) -->
-    <div id="mobile-menu" class="fixed inset-0 bg-slate-50 dark:bg-slate-950 backdrop-blur-xl z-[60] transform translate-x-full transition-transform duration-300 ease-out flex flex-col justify-center items-center space-y-8 overflow-y-auto py-16 invisible pointer-events-none md:hidden">
-        <button id="mobile-close" class="absolute top-6 right-6 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white" aria-label="Close menu">
-            <i data-lucide="x" class="w-8 h-8"></i>
-        </button>
-        <a href="#about" class="text-2xl text-slate-800 dark:text-white font-light mobile-link">About</a>
-        <a href="#skills" class="text-2xl text-slate-800 dark:text-white font-light mobile-link">Skills</a>
-        <a href="#education" class="text-2xl text-slate-800 dark:text-white font-light mobile-link">Education</a>
-        <a href="#experience" class="text-2xl text-slate-800 dark:text-white font-light mobile-link">Experience</a>
-        <a href="#projects" class="text-2xl text-slate-800 dark:text-white font-light mobile-link">Projects</a>
-        <a href="mailto:aadilvahora05@gmail.com" class="text-cyan-600 dark:text-cyan-400 text-xl font-bold mobile-link">Connect With Me</a>
-    </div>
-
     <main>
         <!-- Hero Section -->
-        <section id="hero" class="min-h-screen flex items-center justify-center relative pt-24 pb-12">
-            <div class="container mx-auto px-6 text-center z-10">
-                <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/20 border border-amber-300 dark:border-amber-700/50 text-amber-700 dark:text-amber-300 text-xs font-mono tracking-widest uppercase">
-                    <span class="w-2 h-2 rounded-full bg-amber-500 led-dot" aria-hidden="true"></span>
-                    Now: Proposal &amp; Detail Engineer
+        <section id="hero" class="min-h-[100svh] flex items-center justify-center relative pt-28 pb-16 overflow-hidden">
+            <div class="container mx-auto px-6 text-center z-10 relative">
+                
+                <div class="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-600 dark:text-cyan-300 text-xs font-mono tracking-widest uppercase shadow-sm">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 live-led text-emerald-500" aria-hidden="true"></span>
+                    Active &middot; Proposal &amp; Detail Engineer
                 </div>
                 
-                <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 tracking-tight text-slate-900 dark:text-white">
-                    Hi, I'm <span class="name-highlight">Aadil Vahora</span>
+                <h1 class="text-5xl sm:text-6xl md:text-8xl font-black mb-6 tracking-tight text-slate-900 dark:text-white leading-none">
+                    Aadil <span class="bg-gradient-to-r from-cyan-500 via-blue-600 to-amber-500 bg-clip-text text-transparent">Vahora</span>
                 </h1>
                 
-                <div class="min-h-[2.5rem] sm:min-h-[3rem] md:min-h-[4rem] mb-8 flex justify-center items-center px-4">
-                    <span id="typewriter" class="text-lg sm:text-2xl md:text-4xl text-slate-600 dark:text-slate-300 font-light font-mono text-center"></span>
-                    <span class="cursor-blink w-1 h-6 sm:h-8 md:h-10 bg-cyan-600 dark:bg-cyan-400 ml-2 shrink-0"></span>
+                <div class="min-h-[3rem] sm:min-h-[4rem] mb-6 flex justify-center items-center px-4">
+                    <span id="typewriter" class="text-lg sm:text-2xl md:text-3xl text-slate-600 dark:text-slate-300 font-mono font-semibold text-center"></span>
+                    <span class="w-1.5 h-6 sm:h-8 bg-cyan-500 ml-2 animate-pulse shrink-0"></span>
                 </div>
 
-                <p class="max-w-2xl mx-auto text-slate-600 dark:text-slate-400 text-base md:text-lg mb-8 leading-relaxed reveal px-2">
-                    Bridging electrical design and real-world industrial systems.
-                    Specializing in <span class="text-slate-900 dark:text-white font-medium">Power System Studies</span>, <span class="text-slate-900 dark:text-white font-medium">Panel &amp; Instrumentation Design</span>, and <span class="text-slate-900 dark:text-white font-medium">Process Automation</span>.
+                <p class="max-w-2xl mx-auto text-slate-600 dark:text-slate-400 text-base md:text-lg mb-10 leading-relaxed reveal px-2">
+                    Empowering industrial automation and process plants through precision <strong class="text-slate-900 dark:text-white">Techno-Commercial Bidding</strong>, <strong class="text-slate-900 dark:text-white">ETAP Power Studies</strong>, and robust <strong class="text-slate-900 dark:text-white">Instrumentation Design</strong>.
                 </p>
 
-                <div class="glass-panel inline-flex flex-col items-center gap-2 mb-8 reveal px-6 py-4 rounded-[28px] mx-auto w-fit" aria-hidden="true">
-                    <svg viewBox="0 0 320 60" class="w-56 sm:w-64 md:w-80 h-auto opacity-80" preserveAspectRatio="none">
-                        <polyline class="scope-path text-amber-500 dark:text-amber-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            points="0,30 20,30 30,8 40,52 50,30 70,30 80,12 90,48 100,30 120,30 130,8 140,52 150,30 170,30 180,12 190,48 200,30 220,30 230,8 240,52 250,30 270,30 280,12 290,48 300,30 320,30" />
+                <!-- Live Waveform Module -->
+                <div class="glass-panel inline-flex flex-col items-center gap-2.5 mb-10 reveal px-8 py-4 rounded-3xl mx-auto shadow-2xl relative">
+                    <div class="flex items-center gap-2 text-cyan-600 dark:text-cyan-400 font-mono text-xs tracking-wider uppercase font-bold">
+                        <i data-lucide="activity" class="w-4 h-4 animate-bounce"></i> Industrial Power Grid Simulation
+                    </div>
+                    <svg viewBox="0 0 320 50" class="w-60 sm:w-80 md:w-96 h-auto opacity-90 text-amber-500 dark:text-amber-400" preserveAspectRatio="none">
+                        <polyline class="scope-line" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                            points="0,25 25,25 35,5 45,45 55,25 80,25 90,8 100,42 110,25 135,25 145,5 155,45 165,25 190,25 200,8 210,42 220,25 245,25 255,5 265,45 275,25 300,25 320,25" />
                     </svg>
-                    <span class="font-mono text-[10px] md:text-xs tracking-[0.3em] text-slate-400 dark:text-slate-500 uppercase">415V &middot; 3&phi; &middot; 50Hz</span>
+                    <span class="font-mono text-[10px] text-slate-400 dark:text-slate-500 tracking-[0.25em]">415V &middot; 3-PHASE &middot; 50HZ &middot; STABLE</span>
                 </div>
 
-                <div class="flex flex-col md:flex-row justify-center items-center gap-4 reveal">
-                    <a href="#projects" class="liquid-btn group relative px-8 py-3 rounded-full bg-cyan-600 text-white font-semibold overflow-hidden transition-all hover:bg-cyan-500 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] dark:hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]">
-                        <span class="relative z-10 flex items-center gap-2">View Projects <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i></span>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-5 reveal">
+                    <a href="#proposal" class="spark-btn group relative px-8 py-4 rounded-full text-white font-bold text-base shadow-xl flex items-center gap-3">
+                        <span>Explore Expertise</span> <i data-lucide="zap" class="w-5 h-5 fill-white text-white group-hover:rotate-12 transition-transform"></i>
                     </a>
                     
-                    <div class="flex items-center gap-5 mt-6 md:mt-0 px-6">
-                        <a href="https://linkedin.com/in/aadiil" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-transform hover:-translate-y-1" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
-                        <a href="https://github.com/aadilll2121" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-transform hover:-translate-y-1" aria-label="GitHub"><i data-lucide="github" class="w-6 h-6"></i></a>
-                        <a href="https://www.instagram.com/aadil_6355" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-transform hover:-translate-y-1" aria-label="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
-                    </div>
+                    <a href="https://www.linkedin.com/in/aadiil?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" class="glass-panel px-7 py-4 rounded-full text-slate-800 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 font-bold text-base transition-all flex items-center gap-2.5 shadow-md hover:scale-105">
+                        <i data-lucide="linkedin" class="w-5 h-5 text-cyan-600 dark:text-cyan-400"></i> LinkedIn Profile
+                    </a>
                 </div>
             </div>
-            
-            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block text-slate-400 dark:text-slate-500">
-                <i data-lucide="chevrons-down" class="w-6 h-6"></i>
+        </section>
+
+        <!-- Proposal Engineering Focus Section -->
+        <section id="proposal" class="py-24 relative bg-slate-200/40 dark:bg-slate-900/30">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-slate-900 dark:text-white tracking-tight">Proposal &amp; Detail Engineering</h2>
+                    <div class="w-24 h-1.5 bg-gradient-to-r from-cyan-500 to-amber-500 mx-auto rounded-full"></div>
+                    <p class="text-slate-600 dark:text-slate-400 mt-4 max-w-xl mx-auto text-sm sm:text-base">Bridging client specifications with commercial viability and bulletproof electrical safety.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <!-- Card 1 -->
+                    <div class="glass-panel p-8 rounded-3xl electric-card reveal">
+                        <div class="p-3.5 bg-cyan-500/10 dark:bg-cyan-950/50 rounded-2xl text-cyan-600 dark:text-cyan-400 w-fit mb-6">
+                            <i data-lucide="file-text" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Techno-Commercial Bids</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Formulating competitive cost estimates, reviewing complex tender documents, and ensuring full technical compliance for industrial E&amp;I projects.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="glass-panel p-8 rounded-3xl electric-card reveal">
+                        <div class="p-3.5 bg-amber-500/10 dark:bg-amber-950/50 rounded-2xl text-amber-600 dark:text-amber-400 w-fit mb-6">
+                            <i data-lucide="layers" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Panel &amp; BOM Sizing</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Structuring precise Bill of Materials (BOM), MCC/PCC/VFD panel configuration, and equipment selection optimized for performance and budget.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="glass-panel p-8 rounded-3xl electric-card reveal">
+                        <div class="p-3.5 bg-blue-500/10 dark:bg-blue-950/50 rounded-2xl text-blue-600 dark:text-blue-400 w-fit mb-6">
+                            <i data-lucide="cpu" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Automation &amp; ETAP Studies</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Simulating industrial distribution networks for load flow, short circuit, arc flash mitigation, and relay coordination using ETAP and MATLAB.
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-20 md:py-24 bg-slate-100/50 dark:bg-slate-900/30">
+        <section id="about" class="py-24 relative">
             <div class="container mx-auto px-6">
-                <div class="max-w-4xl mx-auto glass-panel p-6 sm:p-8 md:p-12 rounded-2xl reveal">
+                <div class="max-w-4xl mx-auto glass-panel p-8 sm:p-12 md:p-16 rounded-[2.55rem] electric-card reveal">
                     <div class="flex items-center gap-4 mb-8">
-                        <div class="p-3 bg-cyan-100 dark:bg-cyan-900/30 rounded-lg text-cyan-600 dark:text-cyan-400 shrink-0">
-                            <i data-lucide="user" class="w-6 h-6"></i>
+                        <div class="p-4 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl text-white shadow-lg shrink-0">
+                            <i data-lucide="shield-check" class="w-8 h-8"></i>
                         </div>
-                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Engineering The Future</h2>
+                        <div>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Engineering Rigor &amp; Vision</h2>
+                            <p class="text-cyan-600 dark:text-cyan-400 font-mono text-xs mt-1">BVM Engineering Graduate (Distinction)</p>
+                        </div>
                     </div>
-                    <p class="text-slate-600 dark:text-slate-400 text-base md:text-lg leading-relaxed mb-6">
-                        I'm an <strong class="text-slate-900 dark:text-white">Electrical &amp; Instrumentation Engineer</strong> at ABC Process Solutions Pvt. Ltd., where I work across proposal and detail engineering for industrial process plants — from techno-commercial estimates to panel design, instrumentation, and automation.
+                    <p class="text-slate-700 dark:text-slate-300 text-lg leading-relaxed mb-6 font-medium">
+                        I am currently working as a <strong class="text-cyan-600 dark:text-cyan-400">Proposal Engineer (Electrical &amp; Instrumentation)</strong> at ABC Process Solutions Pvt. Ltd., Anand. I specialize in turning complex industrial specs into structured, cost-effective, and safe engineering proposals.
                     </p>
-                    <p class="text-slate-600 dark:text-slate-400 text-base md:text-lg leading-relaxed">
-                        My background spans <strong class="text-cyan-600 dark:text-cyan-400">power system studies</strong> in ETAP, <strong class="text-cyan-600 dark:text-cyan-400">embedded control</strong> on STM32, and hands-on prototyping — whether that's coordinating relay protection for an industrial network or designing a cycloconverter from scratch. I graduated from Birla Vishvakarma Mahavidyalaya with Distinction, and I like problems that sit right at the intersection of hardware and rigor.
+                    <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
+                        With a B.Tech in Electrical Engineering from Birla Vishvakarma Mahavidyalaya (CPI 7.10), my skillset bridges heavy electrical systems, embedded microcontrollers (STM32), and automation platforms like SCADA and TIA Portal.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="py-20 md:py-24 relative overflow-hidden">
+        <!-- Technical Arsenal Section -->
+        <section id="skills" class="py-24 relative bg-slate-200/40 dark:bg-slate-900/30">
             <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center mb-16 reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">Technical Arsenal</h2>
-                    <div class="w-20 h-1 bg-cyan-500 mx-auto rounded-full"></div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-slate-900 dark:text-white tracking-tight">Technical Arsenal</h2>
+                    <div class="w-24 h-1.5 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto rounded-full"></div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                    <!-- Software & Languages -->
-                    <div class="reveal">
-                        <h3 class="text-xl font-semibold mb-6 flex items-center gap-2 text-slate-800 dark:text-white">
-                            <i data-lucide="code-2" class="text-cyan-600 dark:text-cyan-400"></i> Simulation &amp; Code
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                    <!-- Core Competencies -->
+                    <div class="glass-panel p-8 rounded-3xl electric-card reveal">
+                        <h3 class="text-2xl font-bold mb-6 flex items-center gap-3 text-slate-900 dark:text-white">
+                            <i data-lucide="sliders" class="text-amber-500 w-6 h-6"></i> Core Competencies
                         </h3>
-                        <div class="flex flex-wrap gap-4">
-                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">MATLAB/Simulink</span>
-                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">ETAP</span>
-                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">AutoCAD Electrical</span>
-                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">STM32 CubeIDE</span>
-                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">Proteus</span>
-                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">C/C++</span>
-                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">Python</span>
-                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">SQL</span>
-                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">HTML/CSS</span>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="ic-chip px-4 py-2.5 rounded text-sm font-semibold text-slate-800 dark:text-slate-200">Power System Analysis</span>
+                            <span class="ic-chip px-4 py-2.5 rounded text-sm font-semibold text-slate-800 dark:text-slate-200">Relay Coordination</span>
+                            <span class="ic-chip px-4 py-2.5 rounded text-sm font-semibold text-slate-800 dark:text-slate-200">MCC/PCC/VFD Panel Design</span>
+                            <span class="ic-chip px-4 py-2.5 rounded text-sm font-semibold text-slate-800 dark:text-slate-200">Instrumentation &amp; P&amp;ID</span>
+                            <span class="ic-chip px-4 py-2.5 rounded text-sm font-semibold text-slate-800 dark:text-slate-200">SCADA &amp; PLC (TIA Portal)</span>
+                            <span class="ic-chip px-4 py-2.5 rounded text-sm font-semibold text-slate-800 dark:text-slate-200">Techno-Commercial Bidding</span>
+                            <span class="ic-chip px-4 py-2.5 rounded text-sm font-semibold text-slate-800 dark:text-slate-200">EV Powertrains &amp; BMS</span>
                         </div>
                     </div>
 
-                    <!-- Core Domains -->
-                    <div class="reveal">
-                        <h3 class="text-xl font-semibold mb-6 flex items-center gap-2 text-slate-800 dark:text-white">
-                            <i data-lucide="cpu" class="text-amber-600 dark:text-amber-400"></i> Core Competencies
+                    <!-- Software & Code -->
+                    <div class="glass-panel p-8 rounded-3xl electric-card reveal">
+                        <h3 class="text-2xl font-bold mb-6 flex items-center gap-3 text-slate-900 dark:text-white">
+                            <i data-lucide="terminal" class="text-cyan-500 w-6 h-6"></i> Simulation &amp; Code
                         </h3>
-                        <div class="flex flex-wrap gap-4">
-                            <span class="chip-component px-4 py-2 bg-amber-50/60 dark:bg-amber-900/20 backdrop-blur-md border border-amber-200/70 dark:border-amber-800/50 rounded-full text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">Power System Analysis</span>
-                            <span class="chip-component px-4 py-2 bg-amber-50/60 dark:bg-amber-900/20 backdrop-blur-md border border-amber-200/70 dark:border-amber-800/50 rounded-full text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">Relay Coordination</span>
-                            <span class="chip-component px-4 py-2 bg-amber-50/60 dark:bg-amber-900/20 backdrop-blur-md border border-amber-200/70 dark:border-amber-800/50 rounded-full text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">Panel Design (MCC/PCC/VFD)</span>
-                            <span class="chip-component px-4 py-2 bg-amber-50/60 dark:bg-amber-900/20 backdrop-blur-md border border-amber-200/70 dark:border-amber-800/50 rounded-full text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">Instrumentation &amp; P&amp;ID</span>
-                            <span class="chip-component px-4 py-2 bg-amber-50/60 dark:bg-amber-900/20 backdrop-blur-md border border-amber-200/70 dark:border-amber-800/50 rounded-full text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">SCADA &amp; PLC (TIA Portal)</span>
-                            <span class="chip-component px-4 py-2 bg-amber-50/60 dark:bg-amber-900/20 backdrop-blur-md border border-amber-200/70 dark:border-amber-800/50 rounded-full text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">Circuit Design</span>
-                            <span class="chip-component px-4 py-2 bg-amber-50/60 dark:bg-amber-900/20 backdrop-blur-md border border-amber-200/70 dark:border-amber-800/50 rounded-full text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">Microcontrollers</span>
-                            <span class="chip-component px-4 py-2 bg-amber-50/60 dark:bg-amber-900/20 backdrop-blur-md border border-amber-200/70 dark:border-amber-800/50 rounded-full text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">EV Technology</span>
+                        <div class="flex flex-wrap gap-3 font-mono text-sm">
+                            <span class="ic-chip px-4 py-2 rounded text-slate-700 dark:text-cyan-200">ETAP</span>
+                            <span class="ic-chip px-4 py-2 rounded text-slate-700 dark:text-cyan-200">MATLAB / Simulink</span>
+                            <span class="ic-chip px-4 py-2 rounded text-slate-700 dark:text-cyan-200">AutoCAD Electrical</span>
+                            <span class="ic-chip px-4 py-2 rounded text-slate-700 dark:text-cyan-200">STM32 CubeIDE</span>
+                            <span class="ic-chip px-4 py-2 rounded text-slate-700 dark:text-cyan-200">Proteus</span>
+                            <span class="ic-chip px-4 py-2 rounded text-slate-700 dark:text-cyan-200">C / C++</span>
+                            <span class="ic-chip px-4 py-2 rounded text-slate-700 dark:text-cyan-200">Python</span>
+                            <span class="ic-chip px-4 py-2 rounded text-slate-700 dark:text-cyan-200">SQL</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-         <!-- Education & Certifications Section -->
-         <section id="education" class="py-20 md:py-24 bg-slate-100/50 dark:bg-slate-900/30">
+        <!-- Professional Journey Timeline -->
+        <section id="experience" class="py-24 relative">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16 reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">Education &amp; Certifications</h2>
-                    <div class="w-20 h-1 bg-cyan-500 mx-auto rounded-full"></div>
+                <div class="text-center mb-20 reveal">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-slate-900 dark:text-white tracking-tight">Professional Journey</h2>
+                    <div class="w-24 h-1.5 bg-gradient-to-r from-cyan-500 to-amber-500 mx-auto rounded-full"></div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                    <!-- Degree -->
-                    <div class="glass-panel p-6 sm:p-8 rounded-2xl hover-card reveal">
-                        <div class="flex items-start gap-4">
-                            <div class="p-3 bg-cyan-100 dark:bg-cyan-900/30 rounded-lg text-cyan-600 dark:text-cyan-400 shrink-0">
-                                <i data-lucide="graduation-cap" class="w-8 h-8"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">B.Tech in Electrical Engineering</h3>
-                                <p class="text-slate-600 dark:text-slate-400 mt-1">Birla Vishvakarma Mahavidyalaya</p>
-                                <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">July 2022 - June 2026 | CPI: 7.10 (Distinction)</p>
-                                <p class="text-sm text-slate-500 dark:text-slate-400">Vallabh Vidyanagar, Gujarat</p>
-                            </div>
-                        </div>
+                <div class="relative max-w-4xl mx-auto">
+                    <!-- Vertical Energy Bus -->
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-1.5 h-full bg-slate-300 dark:bg-slate-800 rounded-full overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-b from-cyan-500 via-amber-500 to-blue-600 animate-current-flow" style="background-size: 100% 200%;"></div>
                     </div>
 
-                    <!-- Certifications -->
-                    <div class="glass-panel p-6 sm:p-8 rounded-2xl hover-card reveal">
-                        <div class="flex items-start gap-4">
-                            <div class="p-3 bg-cyan-100 dark:bg-cyan-900/30 rounded-lg text-cyan-600 dark:text-cyan-400 shrink-0">
-                                <i data-lucide="award" class="w-8 h-8"></i>
-                            </div>
-                            <div class="w-full">
-                                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Certifications</h3>
-                                <div class="space-y-4">
-                                    <div class="border-l-2 border-cyan-500 pl-4">
-                                        <h4 class="font-semibold text-slate-800 dark:text-slate-200">Diploma in Programming Languages</h4>
-                                        <p class="text-sm text-slate-500 dark:text-slate-400">Information Technology Center, Mogri (October 2024 - February 2025)</p>
-                                    </div>
-                                    <div class="border-l-2 border-cyan-500 pl-4">
-                                        <h4 class="font-semibold text-slate-800 dark:text-slate-200">AutoCAD Electrical</h4>
-                                        <p class="text-sm text-slate-500 dark:text-slate-400">Information Technology Center, Mogri (June 2024 - July 2024)</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Timeline -->
-        <section id="experience" class="py-20 md:py-24">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16 reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">Professional Journey</h2>
-                    <div class="w-20 h-1 bg-cyan-500 mx-auto rounded-full"></div>
-                </div>
-
-                <div class="relative max-w-3xl mx-auto">
-                    <!-- Vertical "live" trace -->
-                    <div class="timeline-line"></div>
-
-                    <!-- Item 0: ABC Process Solutions (Latest) -->
-                    <div class="relative mb-12 reveal">
+                    <!-- Role 0: ABC Process Solutions -->
+                    <div class="relative mb-16 reveal">
                         <div class="md:flex items-center justify-between group">
-                            <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-amber-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform led-dot"></div>
+                            <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-emerald-500 rounded-full border-4 border-slate-50 dark:border-[#020617] z-10 live-led text-emerald-500"></div>
                             
-                            <div class="ml-10 md:ml-0 md:w-[45%] md:mr-auto glass-panel p-6 rounded-xl hover-card md:text-right">
-                                <span class="text-amber-600 dark:text-amber-400 font-mono text-sm">June 2026 - Present</span>
-                                <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">Proposal Engineer &ndash; Electrical &amp; Instrumentation</h3>
-                                <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">ABC Process Solutions Pvt. Ltd., Anand</p>
-                                <ul class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed list-none space-y-2 text-left md:text-right">
-                                    <li>Preparing techno-commercial proposals &amp; cost estimates for E&amp;I automation projects.</li>
-                                    <li>Reviewing tender documents and specs to support compliant bid submissions.</li>
-                                    <li>Supporting equipment selection, BOM preparation, and cost estimation.</li>
-                                    <li>Assisting with detail engineering documentation and pre-bid technical discussions.</li>
+                            <div class="ml-16 md:ml-0 md:w-[45%] md:mr-auto glass-panel p-7 sm:p-8 rounded-3xl electric-card md:text-right">
+                                <span class="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-mono text-xs font-bold rounded-md mb-3 border border-emerald-500/30">June 2026 - Present</span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Proposal &amp; Detail Engineer</h3>
+                                <p class="text-cyan-600 dark:text-cyan-400 font-semibold mb-3">ABC Process Solutions Pvt. Ltd., Anand</p>
+                                <ul class="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed space-y-2 text-left md:text-right">
+                                    <li>Preparing techno-commercial proposals and precise cost estimates for industrial E&amp;I projects.</li>
+                                    <li>Analyzing complex tender specs to ensure full compliance and competitive positioning.</li>
+                                    <li>Handling equipment selection, BOM breakdown, and client technical discussions.</li>
                                 </ul>
                             </div>
                             <div class="hidden md:block md:w-[45%]"></div>
                         </div>
                     </div>
 
-                    <!-- Item 1: Elcon -->
-                    <div class="relative mb-12 reveal">
+                    <!-- Role 1: Elcon -->
+                    <div class="relative mb-16 reveal">
                         <div class="md:flex items-center justify-between flex-row-reverse group">
-                            <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform"></div>
+                            <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-cyan-500 rounded-full border-4 border-slate-50 dark:border-[#020617] z-10 live-led text-cyan-500"></div>
                             
-                            <div class="ml-10 md:ml-0 md:w-[45%] md:ml-auto glass-panel p-6 rounded-xl hover-card">
-                                <span class="text-cyan-600 dark:text-cyan-400 font-mono text-sm">December 2025 - April 2026</span>
-                                <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">Project Intern</h3>
-                                <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">Elcon Engineers Pvt. Ltd., Vadodara</p>
-                                <ul class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed list-disc pl-5 space-y-2">
-                                    <li>Engineered a complete ETAP model of an industrial distribution network &ndash; SLD design through full implementation with real component data.</li>
-                                    <li>Conducted Load Flow, Short Circuit, Relay Coordination, and Arc Flash studies; delivered an interactive web-based simulation of the results.</li>
-                                </ul>
+                            <div class="ml-16 md:ml-0 md:w-[45%] md:ml-auto glass-panel p-7 sm:p-8 rounded-3xl electric-card">
+                                <span class="inline-block px-3 py-1 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 font-mono text-xs font-bold rounded-md mb-3 border border-cyan-500/30">Dec 2025 - Apr 2026</span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Project Intern</h3>
+                                <p class="text-cyan-600 dark:text-cyan-400 font-semibold mb-3">Elcon Engineers Pvt. Ltd., Vadodara</p>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+                                    Engineered a complete ETAP model of an industrial distribution network from SLD design through full implementation. Executed Load Flow, Short Circuit, Relay Coordination, and Arc Flash safety studies.
+                                </p>
                             </div>
                             <div class="hidden md:block md:w-[45%]"></div>
                         </div>
                     </div>
 
-                    <!-- Item 2: EV Tech -->
-                    <div class="relative mb-12 reveal">
+                    <!-- Role 2: EV Tech -->
+                    <div class="relative mb-16 reveal">
                         <div class="md:flex items-center justify-between group">
-                            <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform"></div>
+                            <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-amber-500 rounded-full border-4 border-slate-50 dark:border-[#020617] z-10 live-led text-amber-500"></div>
                             
-                            <div class="ml-10 md:ml-0 md:w-[45%] md:mr-auto glass-panel p-6 rounded-xl hover-card md:text-right">
-                                <span class="text-cyan-600 dark:text-cyan-400 font-mono text-sm">June 2025 - July 2025</span>
-                                <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">EV Technology Intern</h3>
-                                <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">BVM Engg. College (IEI Organized)</p>
-                                <ul class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed list-none space-y-2 text-left md:text-right">
-                                    <li>Explored EV history, electronic components, and battery technologies through MATLAB simulations.</li>
-                                    <li>Trained on microcontrollers, EV simulators, BLDC/PMSM motors, and Battery Management Systems (BMS).</li>
-                                    <li>Hands-on wiring experience on the E-BAJA car.</li>
-                                </ul>
+                            <div class="ml-16 md:ml-0 md:w-[45%] md:mr-auto glass-panel p-7 sm:p-8 rounded-3xl electric-card md:text-right">
+                                <span class="inline-block px-3 py-1 bg-amber-500/10 text-amber-600 dark:text-amber-400 font-mono text-xs font-bold rounded-md mb-3 border border-amber-500/30">Jun 2025 - Jul 2025</span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">EV Technology Intern</h3>
+                                <p class="text-cyan-600 dark:text-cyan-400 font-semibold mb-3">BVM Engg. College (IEI Organized)</p>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+                                    Trained on EV microcontrollers, BLDC/PMSM motor drives, and Battery Management Systems (BMS). Assisted with physical wiring on the E-BAJA collegiate race car.
+                                </p>
                             </div>
                             <div class="hidden md:block md:w-[45%]"></div>
                         </div>
                     </div>
 
-                    <!-- Item 3: Akaaish -->
-                    <div class="relative mb-12 reveal">
+                    <!-- Role 3: Akaaish -->
+                    <div class="relative reveal">
                         <div class="md:flex items-center justify-between flex-row-reverse group">
-                            <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform"></div>
+                            <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-blue-500 rounded-full border-4 border-slate-50 dark:border-[#020617] z-10 live-led text-blue-500"></div>
                             
-                            <div class="ml-10 md:ml-0 md:w-[45%] md:ml-auto glass-panel p-6 rounded-xl hover-card">
-                                <span class="text-cyan-600 dark:text-cyan-400 font-mono text-sm">June 2024 - July 2024</span>
-                                <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">Summer Intern</h3>
-                                <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">Akaaish Mechatronics (Elecon Unit)</p>
-                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                                  Gained practical exposure to 66/11kV Substation layouts, specifically analyzing Transformers, Circuit Breakers, and Isolator operations.
+                            <div class="ml-16 md:ml-0 md:w-[45%] md:ml-auto glass-panel p-7 sm:p-8 rounded-3xl electric-card">
+                                <span class="inline-block px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 font-mono text-xs font-bold rounded-md mb-3 border border-blue-500/30">Jun 2024 - Jul 2024</span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Summer Intern</h3>
+                                <p class="text-cyan-600 dark:text-cyan-400 font-semibold mb-3">Akaaish Mechatronics (Elecon Unit)</p>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+                                    Gained practical site exposure to 66/11kV Substation layouts, analyzing power transformers, circuit breakers, and isolator maintenance procedures.
                                 </p>
                             </div>
                             <div class="hidden md:block md:w-[45%]"></div>
@@ -644,72 +578,70 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="py-20 md:py-24 bg-slate-100/50 dark:bg-slate-900/30">
+        <section id="projects" class="py-24 relative bg-slate-200/40 dark:bg-slate-900/30">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">Featured Projects</h2>
-                    <div class="w-20 h-1 bg-cyan-500 mx-auto rounded-full"></div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-slate-900 dark:text-white tracking-tight">Featured Engineering Projects</h2>
+                    <div class="w-24 h-1.5 bg-gradient-to-r from-cyan-500 to-amber-500 mx-auto rounded-full"></div>
                 </div>
 
-                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Project Card 0: ETAP (Completed) - SPANS FULL WIDTH -->
-                    <div class="glass-panel rounded-2xl overflow-hidden hover-card reveal relative md:col-span-2">
-                        <div class="absolute top-4 right-4 px-3 py-1 bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-xs font-bold rounded-full border border-emerald-500/50 z-10">
-                            COMPLETED
-                        </div>
-                        <div class="h-40 sm:h-48 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center border-b border-slate-200 dark:border-slate-700 relative group">
-                            <div class="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            <i data-lucide="activity" class="w-14 h-14 sm:w-16 sm:h-16 text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-500"></i>
-                        </div>
-                        <div class="p-6 sm:p-8">
-                            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">Industrial Power System Studies</h3>
-                            <div class="flex gap-2 mb-4 text-xs font-mono flex-wrap">
-                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-cyan-300">ETAP</span>
-                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-cyan-300">Power Analysis</span>
+                <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Project 0: ETAP Full Width -->
+                    <div class="glass-panel rounded-3xl overflow-hidden electric-card reveal lg:col-span-2 group">
+                        <div class="p-8 sm:p-10 bg-gradient-to-br from-cyan-950/20 to-blue-950/20 border-b border-slate-200/50 dark:border-slate-800/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                            <div>
+                                <span class="px-3 py-1 bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-mono font-bold rounded-full border border-emerald-500/30 inline-block mb-3">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block mr-1"></span> COMPLETED &amp; VALIDATED
+                                </span>
+                                <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Industrial Power System Studies</h3>
                             </div>
-                            <p class="text-slate-600 dark:text-slate-400 mb-2">
-                                Executed during a project internship at Elcon Engineers Pvt. Ltd. Engineered a complete ETAP model of an industrial distribution network, from SLD design through full implementation with real-world component data.
+                            <div class="p-3 bg-cyan-500/20 rounded-2xl text-cyan-600 dark:text-cyan-400">
+                                <i data-lucide="activity" class="w-8 h-8"></i>
+                            </div>
+                        </div>
+                        <div class="p-8 sm:p-10">
+                            <div class="flex gap-2 mb-4 text-xs font-mono flex-wrap">
+                                <span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded text-slate-700 dark:text-cyan-300">ETAP</span>
+                                <span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded text-slate-700 dark:text-cyan-300">Load Flow</span>
+                                <span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded text-slate-700 dark:text-cyan-300">Arc Flash Analysis</span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg mb-4">
+                                Executed during my internship at Elcon Engineers. Designed and modeled a complete medium/low voltage industrial distribution network from scratch with realistic component ratings.
                             </p>
-                            <p class="text-slate-600 dark:text-slate-400">
-                                Validated the network through Load Flow, Short Circuit, Relay Coordination, and Arc Flash analysis, then delivered the results as an interactive web-based simulation.
+                            <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg">
+                                Ran rigorous fault simulations, optimized protective relay settings, and generated professional reports to prevent plant downtime and arc flash hazards.
                             </p>
                         </div>
                     </div>
 
-                    <!-- Project Card 1: Open Loop -->
-                    <div class="glass-panel rounded-2xl overflow-hidden hover-card reveal">
-                        <div class="h-40 sm:h-48 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center border-b border-slate-200 dark:border-slate-700 relative group">
-                            <div class="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            <i data-lucide="cpu" class="w-14 h-14 sm:w-16 sm:h-16 text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-500"></i>
+                    <!-- Project 1 -->
+                    <div class="glass-panel rounded-3xl overflow-hidden electric-card reveal p-8">
+                        <div class="p-3 bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-2xl w-fit mb-6">
+                            <i data-lucide="cpu" class="w-7 h-7"></i>
                         </div>
-                        <div class="p-6 sm:p-8">
-                            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">Open Loop IPMSM Motor Drive Control</h3>
-                            <div class="flex gap-2 mb-4 text-xs font-mono flex-wrap">
-                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-cyan-300">Embedded C</span>
-                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-cyan-300">STM32</span>
-                            </div>
-                            <p class="text-slate-600 dark:text-slate-400">
-                                Developed and implemented embedded C firmware on an STM32 microcontroller for open-loop control. Interfaced the MCU with a 3-phase inverter driver and achieved stable motor rotation at constant reference speeds.
-                            </p>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">Open-Loop IPMSM Motor Drive</h3>
+                        <div class="flex gap-2 mb-4 text-xs font-mono flex-wrap">
+                            <span class="px-2.5 py-1 bg-slate-200 dark:bg-slate-800 rounded text-slate-700 dark:text-slate-300">STM32 CubeIDE</span>
+                            <span class="px-2.5 py-1 bg-slate-200 dark:bg-slate-800 rounded text-slate-700 dark:text-slate-300">Embedded C</span>
                         </div>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Programmed low-level microcontroller firmware on an STM32 MCU to interface with a 3-phase inverter board, achieving stable IPMSM rotor speed control.
+                        </p>
                     </div>
 
-                    <!-- Project Card 2: Cycloconverter -->
-                    <div class="glass-panel rounded-2xl overflow-hidden hover-card reveal">
-                        <div class="h-40 sm:h-48 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center border-b border-slate-200 dark:border-slate-700 relative group">
-                            <div class="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            <i data-lucide="zap" class="w-14 h-14 sm:w-16 sm:h-16 text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-500"></i>
+                    <!-- Project 2 -->
+                    <div class="glass-panel rounded-3xl overflow-hidden electric-card reveal p-8">
+                        <div class="p-3 bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-2xl w-fit mb-6">
+                            <i data-lucide="zap" class="w-7 h-7"></i>
                         </div>
-                        <div class="p-6 sm:p-8">
-                            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">Cycloconverter Technologies</h3>
-                            <div class="flex gap-2 mb-4 text-xs font-mono flex-wrap">
-                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-cyan-300">MATLAB</span>
-                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-cyan-300">Arduino</span>
-                            </div>
-                            <p class="text-slate-600 dark:text-slate-400">
-                                Designed a proof-of-concept cycloconverter to step down 220V to 12V using SCRs and an optocoupler. Created a functional simulation in MATLAB with control logic implemented on an Arduino UNO.
-                            </p>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">Cycloconverter Technology</h3>
+                        <div class="flex gap-2 mb-4 text-xs font-mono flex-wrap">
+                            <span class="px-2.5 py-1 bg-slate-200 dark:bg-slate-800 rounded text-slate-700 dark:text-slate-300">MATLAB</span>
+                            <span class="px-2.5 py-1 bg-slate-200 dark:bg-slate-800 rounded text-slate-700 dark:text-slate-300">Arduino UNO</span>
                         </div>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Designed a single-phase frequency step-down circuit utilizing Silicon Controlled Rectifiers (SCRs) and optocouplers, validated via MATLAB Simulink.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -717,32 +649,47 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white dark:bg-slate-950 pt-16 md:pt-20 pb-10 border-t border-slate-200 dark:border-slate-900">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-6">Let's Electrify The World</h2>
-            <p class="text-slate-600 dark:text-slate-400 mb-10 max-w-lg mx-auto">Open for collaborations and interesting problems in power systems, instrumentation, and automation. Feel free to reach out.</p>
+    <footer class="bg-white dark:bg-[#030712] pt-20 pb-12 border-t border-slate-200 dark:border-slate-800/80 relative overflow-hidden">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4 tracking-tight">Let's Electrify The World</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-10 max-w-lg mx-auto text-base">Open for professional proposals, E&amp;I consultations, and industrial collaborations. Reach out anytime.</p>
             
-            <a href="mailto:aadilvahora05@gmail.com" class="liquid-btn relative inline-block bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-full transition-transform hover:scale-105 mb-12 shadow-lg shadow-cyan-500/25 overflow-hidden">
-                Get In Touch
-            </a>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-12">
+                <!-- WhatsApp Direct CTA -->
+                <a href="https://wa.me/916355069723?text=Hi%20Aadil,%20let's%20discuss%20an%20electrical%20proposal." target="_blank" rel="noopener" class="spark-btn inline-flex items-center gap-2 text-white font-bold py-4 px-8 rounded-full shadow-lg text-sm uppercase tracking-wider">
+                    <i data-lucide="message-square" class="w-5 h-5"></i> Chat on WhatsApp (+91 63550 69723)
+                </a>
+            </div>
 
-            <div class="flex justify-center gap-8 mb-8 items-center">
-                <a href="https://linkedin.com/in/aadiil" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
-                <a href="https://github.com/aadilll2121" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform" aria-label="GitHub"><i data-lucide="github" class="w-6 h-6"></i></a>
-                <a href="tel:+916355069723" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform" title="+91 63550 69723" aria-label="Phone"><i data-lucide="phone" class="w-6 h-6"></i></a>
-                <a href="https://www.instagram.com/aadil_6355" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform" aria-label="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+            <!-- Social Links including exact LinkedIn -->
+            <div class="flex justify-center gap-6 mb-10 items-center flex-wrap">
+                <a href="https://www.linkedin.com/in/aadiil?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" class="p-3.5 rounded-2xl glass-panel text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-all hover:scale-110 shadow-md" aria-label="LinkedIn">
+                    <i data-lucide="linkedin" class="w-6 h-6"></i>
+                </a>
+                <a href="https://github.com/aadilll2121" target="_blank" rel="noopener" class="p-3.5 rounded-2xl glass-panel text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-all hover:scale-110 shadow-md" aria-label="GitHub">
+                    <i data-lucide="github" class="w-6 h-6"></i>
+                </a>
+                <a href="https://wa.me/916355069723" target="_blank" rel="noopener" class="p-3.5 rounded-2xl glass-panel text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition-all hover:scale-110 shadow-md" aria-label="WhatsApp">
+                    <i data-lucide="message-square" class="w-6 h-6"></i>
+                </a>
+                <a href="https://www.instagram.com/aadil_6355" target="_blank" rel="noopener" class="p-3.5 rounded-2xl glass-panel text-slate-600 dark:text-slate-300 hover:text-pink-500 transition-all hover:scale-110 shadow-md" aria-label="Instagram">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                </a>
+                <a href="mailto:aadilvahora05@gmail.com" class="p-3.5 rounded-2xl glass-panel text-slate-600 dark:text-slate-300 hover:text-amber-500 transition-all hover:scale-110 shadow-md" aria-label="Email">
+                    <i data-lucide="mail" class="w-6 h-6"></i>
+                </a>
             </div>
             
-            <p class="text-slate-500 dark:text-slate-600 text-sm">&copy; <span id="year"></span> Aadil Vahora. Crafted with <i data-lucide="heart" class="w-3 h-3 inline text-red-500"></i> and Electrons.</p>
+            <p class="text-slate-500 dark:text-slate-500 text-xs font-mono">&copy; <span id="year"></span> Aadil Vahora. Crafted with high voltage and precision.</p>
         </div>
     </footer>
 
     <script>
-        // --- 1. Initialize Icons ---
+        // --- 1. Init Lucide Icons ---
         lucide.createIcons();
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // --- 2. Dark/Light Mode Logic ---
+        // --- 2. Dark / Light Mode ---
         const themeToggleBtn = document.getElementById('theme-toggle');
         const htmlElement = document.documentElement;
         
@@ -757,121 +704,106 @@
             localStorage.theme = htmlElement.classList.contains('dark') ? 'dark' : 'light';
         });
 
-        // --- 3. Ambient background is pure CSS (see .ambient-bg / .orb rules) ---
-
-        // --- 4. Advanced Typewriter Effect ---
-        const phrases = ["Electrical & Instrumentation Engineer.", "Panel Design. Automation. Power Systems.", "ETAP \u00B7 SCADA \u00B7 STM32."];
+        // --- 3. Typewriter Effect ---
+        const phrases = [
+            "Proposal & Detail Engineer.",
+            "Industrial Automation & E&I Bidding.",
+            "ETAP Power Systems & Relay Coordination.",
+            "Panel Design & Instrumentation."
+        ];
         const typeEl = document.getElementById('typewriter');
-        let phraseIndex = 0;
-        let charIndex = 0;
+        let phraseIdx = 0;
+        let charIdx = 0;
         let isDeleting = false;
-        let typeSpeed = 100;
 
-        function typeLoop() {
-            const currentPhrase = phrases[phraseIndex];
-            
+        function typewriterLoop() {
+            const current = phrases[phraseIdx];
             if (isDeleting) {
-                typeEl.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-                typeSpeed = 50;
+                typeEl.textContent = current.substring(0, charIdx - 1);
+                charIdx--;
+                speed = 35;
             } else {
-                typeEl.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-                typeSpeed = 100;
+                typeEl.textContent = current.substring(0, charIdx + 1);
+                charIdx++;
+                speed = 75;
             }
 
-            if (!isDeleting && charIndex === currentPhrase.length) {
+            if (!isDeleting && charIdx === current.length) {
                 isDeleting = true;
-                typeSpeed = 2000;
-            } else if (isDeleting && charIndex === 0) {
+                speed = 2000; // Wait at end of sentence
+            } else if (isDeleting && charIdx === 0) {
                 isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                typeSpeed = 500;
+                phraseIdx = (phraseIdx + 1) % phrases.length;
+                speed = 500;
             }
-
-            setTimeout(typeLoop, typeSpeed);
+            setTimeout(typewriterLoop, speed);
         }
-        document.addEventListener('DOMContentLoaded', typeLoop);
+        document.addEventListener('DOMContentLoaded', typewriterLoop);
 
-        // --- 5. Scroll Reveal Observer ---
-        const observerOptions = { threshold: 0.15 };
+        // --- 4. Intersection Observer for Scroll Reveals ---
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+            entries.forEach(e => {
+                if (e.isIntersecting) e.target.classList.add('active');
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // --- 5b. Scroll-spy: highlight the current section in the nav ---
-        const sectionIds = ['about', 'skills', 'education', 'experience', 'projects'];
-        const navLinksBySection = {};
+        // --- 5. Scroll-Spy Navigation Highlight ---
+        const sectionIds = ['about', 'proposal', 'skills', 'experience', 'projects'];
+        const linksMap = {};
         sectionIds.forEach(id => {
-            navLinksBySection[id] = document.querySelectorAll(
-                `a.nav-link[href="#${id}"], a.mobile-link[href="#${id}"]`
-            );
+            linksMap[id] = document.querySelectorAll(`a.nav-link[href="#${id}"], a.mobile-link[href="#${id}"]`);
         });
 
-        function setActiveSection(activeId) {
-            sectionIds.forEach(id => {
-                navLinksBySection[id].forEach(link => {
-                    link.classList.toggle('nav-active', id === activeId);
-                });
-            });
-        }
-
-        const sectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setActiveSection(entry.target.id);
+        const spyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    const id = e.target.id;
+                    sectionIds.forEach(sec => {
+                        linksMap[sec].forEach(l => l.classList.toggle('nav-active', sec === id));
+                    });
                 }
             });
-        }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+        }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
 
         sectionIds.forEach(id => {
-            const section = document.getElementById(id);
-            if (section) sectionObserver.observe(section);
+            const sec = document.getElementById(id);
+            if (sec) spyObserver.observe(sec);
         });
 
-        // --- 6. Mobile Menu Logic ---
+        // --- 6. Mobile Dropdown Menu Logic ---
         const btn = document.getElementById('mobile-toggle');
         const menu = document.getElementById('mobile-menu');
-        const closeBtn = document.getElementById('mobile-close');
-        const links = document.querySelectorAll('.mobile-link');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        function openMenu() {
-            menu.classList.remove('translate-x-full', 'invisible', 'pointer-events-none');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMenu() {
-            menu.classList.add('translate-x-full');
-            document.body.style.overflow = '';
-            // Wait for the slide-out transition to finish before hiding for real.
-            setTimeout(() => {
-                if (menu.classList.contains('translate-x-full')) {
-                    menu.classList.add('invisible', 'pointer-events-none');
-                }
-            }, 300);
-        }
-
-        function toggleMenu() {
-            const isOpen = !menu.classList.contains('translate-x-full');
-            isOpen ? closeMenu() : openMenu();
+        function toggleMenu(e) {
+            e.stopPropagation();
+            const isOpen = menu.classList.contains('opacity-100');
+            if (isOpen) {
+                menu.classList.remove('opacity-100', 'scale-100');
+                menu.classList.add('opacity-0', 'scale-95', 'invisible');
+            } else {
+                menu.classList.remove('invisible', 'opacity-0', 'scale-95');
+                menu.classList.add('opacity-100', 'scale-100');
+            }
         }
 
         btn.addEventListener('click', toggleMenu);
-        closeBtn.addEventListener('click', closeMenu);
-        links.forEach(link => link.addEventListener('click', closeMenu));
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeMenu();
+        mobileLinks.forEach(l => l.addEventListener('click', () => {
+            menu.classList.remove('opacity-100', 'scale-100');
+            menu.classList.add('opacity-0', 'scale-95', 'invisible');
+        }));
+
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && !btn.contains(e.target)) {
+                menu.classList.remove('opacity-100', 'scale-100');
+                menu.classList.add('opacity-0', 'scale-95', 'invisible');
+            }
         });
     </script>
 </body>
 </html>
-
 
 ```
 
