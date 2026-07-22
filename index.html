@@ -284,6 +284,40 @@
             border-radius: 4px;
         }
 
+        /* --- Scroll-spy: active section indicator (a little glowing wire under the current link) --- */
+        .nav-link, .mobile-link {
+            position: relative;
+        }
+        .nav-active {
+            color: #0891b2 !important;
+        }
+        .dark .nav-active {
+            color: #22d3ee !important;
+        }
+        .nav-link.nav-active::after {
+            content: '';
+            position: absolute;
+            left: 8%;
+            right: 8%;
+            bottom: -6px;
+            height: 2px;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, #22d3ee, #f59e0b);
+            box-shadow: 0 0 6px rgba(34, 211, 238, 0.6);
+        }
+        .mobile-link.nav-active::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -8px;
+            width: 28px;
+            height: 2px;
+            transform: translateX(-50%);
+            border-radius: 9999px;
+            background: linear-gradient(90deg, #22d3ee, #f59e0b);
+            box-shadow: 0 0 6px rgba(34, 211, 238, 0.6);
+        }
+
         /* --- Reduced motion --- */
         @media (prefers-reduced-motion: reduce) {
             .reveal { transition: none !important; }
@@ -314,11 +348,11 @@
 
             <!-- Desktop Nav capsule -->
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide nav-glass rounded-full px-8 py-3">
-                <a href="#about" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">ABOUT</a>
-                <a href="#skills" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">SKILLS</a>
-                <a href="#education" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">EDUCATION</a>
-                <a href="#experience" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">EXPERIENCE</a>
-                <a href="#projects" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">PROJECTS</a>
+                <a href="#about" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">ABOUT</a>
+                <a href="#skills" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">SKILLS</a>
+                <a href="#education" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">EDUCATION</a>
+                <a href="#experience" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">EXPERIENCE</a>
+                <a href="#projects" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">PROJECTS</a>
             </nav>
 
             <!-- Controls capsule -->
@@ -770,6 +804,36 @@
         }, observerOptions);
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // --- 5b. Scroll-spy: highlight the current section in the nav ---
+        const sectionIds = ['about', 'skills', 'education', 'experience', 'projects'];
+        const navLinksBySection = {};
+        sectionIds.forEach(id => {
+            navLinksBySection[id] = document.querySelectorAll(
+                `a.nav-link[href="#${id}"], a.mobile-link[href="#${id}"]`
+            );
+        });
+
+        function setActiveSection(activeId) {
+            sectionIds.forEach(id => {
+                navLinksBySection[id].forEach(link => {
+                    link.classList.toggle('nav-active', id === activeId);
+                });
+            });
+        }
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setActiveSection(entry.target.id);
+                }
+            });
+        }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+        sectionIds.forEach(id => {
+            const section = document.getElementById(id);
+            if (section) sectionObserver.observe(section);
+        });
 
         // --- 6. Mobile Menu Logic ---
         const btn = document.getElementById('mobile-toggle');
