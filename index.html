@@ -305,24 +305,26 @@
     </div>
 
     <!-- Navigation -->
-    <header class="fixed top-3 sm:top-4 left-1/2 -translate-x-1/2 w-[94%] sm:w-[92%] max-w-5xl z-50 nav-glass rounded-full transition-all duration-300" id="navbar">
-        <div class="px-4 sm:px-6 py-3 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold font-mono tracking-tighter hover:text-cyan-600 dark:hover:text-cyan-400 text-slate-900 dark:text-slate-100 transition-colors">
+    <header class="fixed top-3 sm:top-4 inset-x-0 z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3">
+            <!-- Logo capsule -->
+            <a href="#" class="nav-glass rounded-full px-5 py-3 text-2xl font-bold font-mono tracking-tighter hover:text-cyan-600 dark:hover:text-cyan-400 text-slate-900 dark:text-slate-100 transition-colors shrink-0">
                 AV<span class="text-cyan-600 dark:text-cyan-400">.</span>
             </a>
-            
-            <div class="flex items-center gap-6">
-                <!-- Desktop Nav -->
-                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
-                    <a href="#about" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">ABOUT</a>
-                    <a href="#skills" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">SKILLS</a>
-                    <a href="#education" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">EDUCATION</a>
-                    <a href="#experience" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">EXPERIENCE</a>
-                    <a href="#projects" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">PROJECTS</a>
-                </nav>
 
+            <!-- Desktop Nav capsule -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide nav-glass rounded-full px-8 py-3">
+                <a href="#about" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">ABOUT</a>
+                <a href="#skills" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">SKILLS</a>
+                <a href="#education" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">EDUCATION</a>
+                <a href="#experience" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">EXPERIENCE</a>
+                <a href="#projects" class="text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">PROJECTS</a>
+            </nav>
+
+            <!-- Controls capsule -->
+            <div class="nav-glass rounded-full px-3 py-2 flex items-center gap-3 shrink-0">
                 <!-- Theme Toggle Button -->
-                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200/60 dark:hover:bg-slate-800/60 transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
                     <i data-lucide="sun" class="w-5 h-5 text-yellow-400 hidden dark:block"></i>
                     <i data-lucide="moon" class="w-5 h-5 text-slate-600 block dark:hidden"></i>
                 </button>
@@ -333,7 +335,7 @@
                 </a>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-toggle" class="md:hidden text-slate-800 dark:text-white focus:outline-none" aria-label="Open menu">
+                <button id="mobile-toggle" class="md:hidden p-2 text-slate-800 dark:text-white focus:outline-none" aria-label="Open menu">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
