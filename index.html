@@ -119,6 +119,23 @@
         .dark .glass-panel::before {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 45%);
         }
+        /* Cursor-tracked light spotlight — the glass "catches" light where the pointer is */
+        .glass-panel::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.4), transparent 45%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+        .glass-panel:hover::after {
+            opacity: 1;
+        }
+        .dark .glass-panel::after {
+            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(34, 211, 238, 0.2), transparent 45%);
+        }
 
         .nav-glass {
             background: rgba(255, 255, 255, 0.6);
@@ -243,6 +260,33 @@
         .chip-component::before { left: -6px; }
         .chip-component::after { right: -6px; }
 
+        /* Staggered chip entrance — each tag cascades in slightly after the last */
+        .chip-component {
+            opacity: 0;
+            transform: translateY(8px) scale(0.96);
+            transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+        .reveal.active .chip-component {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .reveal.active .chip-component:nth-child(1) { transition-delay: 0.02s; }
+        .reveal.active .chip-component:nth-child(2) { transition-delay: 0.07s; }
+        .reveal.active .chip-component:nth-child(3) { transition-delay: 0.12s; }
+        .reveal.active .chip-component:nth-child(4) { transition-delay: 0.17s; }
+        .reveal.active .chip-component:nth-child(5) { transition-delay: 0.22s; }
+        .reveal.active .chip-component:nth-child(6) { transition-delay: 0.27s; }
+        .reveal.active .chip-component:nth-child(7) { transition-delay: 0.32s; }
+        .reveal.active .chip-component:nth-child(8) { transition-delay: 0.37s; }
+        .reveal.active .chip-component:nth-child(9) { transition-delay: 0.42s; }
+        @media (prefers-reduced-motion: reduce) {
+            .chip-component {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+        }
+
         /* --- Liquid glass button sheen sweep --- */
         .liquid-btn::after {
             content: '';
@@ -359,8 +403,8 @@
                 </button>
 
                 <!-- Connect With Me Button (Desktop) -->
-                <a href="mailto:aadilvahora05@gmail.com" class="hidden md:inline-block px-5 py-2 rounded-full border border-cyan-600 dark:border-cyan-500 text-cyan-600 dark:text-cyan-400 hover:bg-cyan-50 dark:hover:bg-cyan-500/10 font-medium transition-all uppercase text-xs tracking-wider">
-                    Connect With Me
+                <a href="https://www.linkedin.com/in/aadiil?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" class="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full border border-cyan-600 dark:border-cyan-500 text-cyan-600 dark:text-cyan-400 hover:bg-cyan-50 dark:hover:bg-cyan-500/10 font-medium transition-all uppercase text-xs tracking-wider">
+                    <i data-lucide="linkedin" class="w-4 h-4"></i> Connect on LinkedIn
                 </a>
 
                 <!-- Mobile Menu Toggle -->
@@ -384,7 +428,7 @@
             <a href="#experience" class="mobile-link px-4 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-white/50 dark:hover:bg-white/5 transition-colors">Experience</a>
             <a href="#projects" class="mobile-link px-4 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-white/50 dark:hover:bg-white/5 transition-colors">Projects</a>
             <div class="my-1 border-t border-slate-200/60 dark:border-white/10"></div>
-            <a href="mailto:aadilvahora05@gmail.com" class="mobile-link px-4 py-2.5 rounded-xl text-cyan-600 dark:text-cyan-400 font-semibold hover:bg-cyan-50/50 dark:hover:bg-cyan-500/10 transition-colors">Connect With Me</a>
+            <a href="https://www.linkedin.com/in/aadiil?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" class="mobile-link flex items-center gap-2 px-4 py-2.5 rounded-xl text-cyan-600 dark:text-cyan-400 font-semibold hover:bg-cyan-50/50 dark:hover:bg-cyan-500/10 transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i> Connect on LinkedIn</a>
         </nav>
     </div>
 
@@ -425,7 +469,7 @@
                     </a>
                     
                     <div class="flex items-center gap-5 mt-6 md:mt-0 px-6">
-                        <a href="https://linkedin.com/in/aadiil" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-transform hover:-translate-y-1" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                        <a href="https://www.linkedin.com/in/aadiil?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-transform hover:-translate-y-1" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
                         <a href="https://github.com/aadilll2121" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-transform hover:-translate-y-1" aria-label="GitHub"><i data-lucide="github" class="w-6 h-6"></i></a>
                         <a href="https://www.instagram.com/aadil_6355" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-transform hover:-translate-y-1" aria-label="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
                     </div>
@@ -719,16 +763,15 @@
     <footer class="bg-white dark:bg-slate-950 pt-16 md:pt-20 pb-10 border-t border-slate-200 dark:border-slate-900">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-6">Let's Electrify The World</h2>
-            <p class="text-slate-600 dark:text-slate-400 mb-10 max-w-lg mx-auto">Open for collaborations and interesting problems in power systems, instrumentation, and automation. Feel free to reach out.</p>
+            <p class="text-slate-600 dark:text-slate-400 mb-10 max-w-lg mx-auto">Open for collaborations and interesting problems in power systems, instrumentation, and automation. Let's connect on LinkedIn.</p>
             
-            <a href="mailto:aadilvahora05@gmail.com" class="liquid-btn relative inline-block bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-full transition-transform hover:scale-105 mb-12 shadow-lg shadow-cyan-500/25 overflow-hidden">
-                Get In Touch
+            <a href="https://www.linkedin.com/in/aadiil?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" class="liquid-btn relative inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-full transition-transform hover:scale-105 mb-12 shadow-lg shadow-cyan-500/25 overflow-hidden">
+                <i data-lucide="linkedin" class="w-5 h-5"></i> Connect on LinkedIn
             </a>
 
             <div class="flex justify-center gap-8 mb-8 items-center">
-                <a href="https://linkedin.com/in/aadiil" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                <a href="https://www.linkedin.com/in/aadiil?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
                 <a href="https://github.com/aadilll2121" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform" aria-label="GitHub"><i data-lucide="github" class="w-6 h-6"></i></a>
-                <a href="tel:+916355069723" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform" title="+91 63550 69723" aria-label="Phone"><i data-lucide="phone" class="w-6 h-6"></i></a>
                 <a href="https://www.instagram.com/aadil_6355" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform" aria-label="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
             </div>
             
@@ -834,6 +877,34 @@
             if (section) sectionObserver.observe(section);
         });
 
+        // --- 5c. Liquid glass interactions: cursor spotlight + pointer tilt ---
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+        if (!reduceMotion && canHover) {
+            // Spotlight: track the pointer so glass panels "catch" light where you're looking
+            document.querySelectorAll('.glass-panel').forEach(panel => {
+                panel.addEventListener('pointermove', (e) => {
+                    const rect = panel.getBoundingClientRect();
+                    panel.style.setProperty('--mx', `${((e.clientX - rect.left) / rect.width) * 100}%`);
+                    panel.style.setProperty('--my', `${((e.clientY - rect.top) / rect.height) * 100}%`);
+                });
+            });
+
+            // Tilt: cards lean gently toward the pointer for a little depth
+            document.querySelectorAll('.hover-card').forEach(card => {
+                card.addEventListener('pointermove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const px = (e.clientX - rect.left) / rect.width - 0.5;
+                    const py = (e.clientY - rect.top) / rect.height - 0.5;
+                    card.style.transform = `perspective(800px) rotateX(${(-py * 6).toFixed(2)}deg) rotateY(${(px * 6).toFixed(2)}deg) translateY(-4px)`;
+                });
+                card.addEventListener('pointerleave', () => {
+                    card.style.transform = '';
+                });
+            });
+        }
+
         // --- 6. Mobile Menu Logic (compact dropdown) ---
         const btn = document.getElementById('mobile-toggle');
         const menu = document.getElementById('mobile-menu');
@@ -876,6 +947,7 @@
     </script>
 </body>
 </html>
+
 
 
 ```
