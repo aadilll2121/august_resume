@@ -31,9 +31,9 @@
                     },
                     colors: {
                         electric: {
-                            400: '#22d3ee',
-                            500: '#06b6d4',
-                            600: '#0891b2',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
                         }
                     },
                     animation: {
@@ -75,8 +75,8 @@
             opacity: 0.5;
             will-change: transform;
         }
-        .orb-1 { width: 480px; height: 480px; top: -12%; left: -10%; background: radial-gradient(circle, rgba(34,211,238,0.55), transparent 70%); animation: drift1 28s ease-in-out infinite; }
-        .orb-2 { width: 420px; height: 420px; top: 15%; right: -15%; background: radial-gradient(circle, rgba(245,158,11,0.45), transparent 70%); animation: drift2 34s ease-in-out infinite; }
+        .orb-1 { width: 480px; height: 480px; top: -12%; left: -10%; background: radial-gradient(circle, rgba(167,139,250,0.55), transparent 70%); animation: drift1 28s ease-in-out infinite; }
+        .orb-2 { width: 420px; height: 420px; top: 15%; right: -15%; background: radial-gradient(circle, rgba(217,70,239,0.45), transparent 70%); animation: drift2 34s ease-in-out infinite; }
         .orb-3 { width: 400px; height: 400px; bottom: -18%; left: 12%; background: radial-gradient(circle, rgba(59,130,246,0.4), transparent 70%); animation: drift3 30s ease-in-out infinite; }
         .orb-4 { width: 320px; height: 320px; bottom: 8%; right: 8%; background: radial-gradient(circle, rgba(16,185,129,0.3), transparent 70%); animation: drift2 24s ease-in-out infinite reverse; }
         @keyframes drift1 { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(60px, 40px) scale(1.1); } }
@@ -90,7 +90,7 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        .dark ::-webkit-scrollbar-thumb { background: #22d3ee; }
+        .dark ::-webkit-scrollbar-thumb { background: #a78bfa; }
         .dark ::-webkit-scrollbar-track { background: #0f172a; }
 
         /* --- Liquid Glass material --- */
@@ -134,7 +134,7 @@
             opacity: 1;
         }
         .dark .glass-panel::after {
-            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(34, 211, 238, 0.2), transparent 45%);
+            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(167, 139, 250, 0.2), transparent 45%);
         }
 
         .nav-glass {
@@ -153,14 +153,14 @@
 
         /* --- Typography & Gradients --- */
         .name-highlight {
-            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+            background: linear-gradient(135deg, #7c3aed 0%, #c026d3 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             color: transparent;
         }
         .dark .name-highlight {
-            background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
+            background: linear-gradient(135deg, #a78bfa 0%, #e879f9 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -168,12 +168,12 @@
         }
 
         .text-gradient {
-            background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+            background: linear-gradient(135deg, #7c3aed 0%, #7c3aed 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .dark .text-gradient {
-            background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
+            background: linear-gradient(135deg, #a78bfa 0%, #e879f9 100%);
         }
 
         /* --- Timeline: a frosted glass tube with current flowing through it --- */
@@ -200,12 +200,12 @@
             right: 0;
             height: 160px;
             border-radius: 9999px;
-            background: linear-gradient(to bottom, transparent, rgba(37, 99, 235, 0.9), rgba(245, 158, 11, 0.9), transparent);
+            background: linear-gradient(to bottom, transparent, rgba(124, 58, 237, 0.9), rgba(217, 70, 239, 0.9), transparent);
             filter: blur(3px);
             animation: current-flow 3.6s ease-in-out infinite;
         }
         .dark .timeline-line::after {
-            background: linear-gradient(to bottom, transparent, rgba(34, 211, 238, 0.95), rgba(245, 158, 11, 0.95), transparent);
+            background: linear-gradient(to bottom, transparent, rgba(167, 139, 250, 0.95), rgba(217, 70, 239, 0.95), transparent);
         }
         @keyframes current-flow {
             0% { top: -25%; }
@@ -233,8 +233,8 @@
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
         }
         .dark .hover-card:hover {
-            box-shadow: 0 10px 30px -10px rgba(34, 211, 238, 0.3);
-            border-color: rgba(34, 211, 238, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(167, 139, 250, 0.3);
+            border-color: rgba(167, 139, 250, 0.3);
         }
 
         .cursor-blink { animation: blink 1s step-end infinite; }
@@ -323,7 +323,7 @@
 
         /* --- Accessibility: keyboard focus --- */
         a:focus-visible, button:focus-visible {
-            outline: 2px solid #f59e0b;
+            outline: 2px solid #d946ef;
             outline-offset: 3px;
             border-radius: 4px;
         }
@@ -333,10 +333,10 @@
             position: relative;
         }
         .nav-active {
-            color: #0891b2 !important;
+            color: #7c3aed !important;
         }
         .dark .nav-active {
-            color: #22d3ee !important;
+            color: #a78bfa !important;
         }
         .nav-link.nav-active::after {
             content: '';
@@ -346,15 +346,15 @@
             bottom: -6px;
             height: 2px;
             border-radius: 9999px;
-            background: linear-gradient(90deg, #22d3ee, #f59e0b);
-            box-shadow: 0 0 6px rgba(34, 211, 238, 0.6);
+            background: linear-gradient(90deg, #a78bfa, #d946ef);
+            box-shadow: 0 0 6px rgba(167, 139, 250, 0.6);
         }
         .mobile-link.nav-active {
-            background: rgba(34, 211, 238, 0.12);
+            background: rgba(167, 139, 250, 0.12);
             font-weight: 600;
         }
         .dark .mobile-link.nav-active {
-            background: rgba(34, 211, 238, 0.1);
+            background: rgba(167, 139, 250, 0.1);
         }
 
         /* --- Reduced motion --- */
@@ -381,17 +381,17 @@
     <header class="fixed top-3 sm:top-4 inset-x-0 z-50 transition-all duration-300" id="navbar">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3">
             <!-- Logo capsule -->
-            <a href="#" class="nav-glass rounded-full px-5 py-3 text-2xl font-bold font-mono tracking-tighter hover:text-cyan-600 dark:hover:text-cyan-400 text-slate-900 dark:text-slate-100 transition-colors shrink-0">
-                AV<span class="text-cyan-600 dark:text-cyan-400">.</span>
+            <a href="#" class="nav-glass rounded-full px-5 py-3 text-2xl font-bold font-mono tracking-tighter hover:text-violet-600 dark:hover:text-violet-400 text-slate-900 dark:text-slate-100 transition-colors shrink-0">
+                AV<span class="text-violet-600 dark:text-violet-400">.</span>
             </a>
 
             <!-- Desktop Nav capsule -->
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide nav-glass rounded-full px-8 py-3">
-                <a href="#about" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">ABOUT</a>
-                <a href="#skills" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">SKILLS</a>
-                <a href="#education" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">EDUCATION</a>
-                <a href="#experience" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">EXPERIENCE</a>
-                <a href="#projects" class="nav-link text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">PROJECTS</a>
+                <a href="#about" class="nav-link text-slate-600 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">ABOUT</a>
+                <a href="#skills" class="nav-link text-slate-600 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">SKILLS</a>
+                <a href="#education" class="nav-link text-slate-600 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">EDUCATION</a>
+                <a href="#experience" class="nav-link text-slate-600 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">EXPERIENCE</a>
+                <a href="#projects" class="nav-link text-slate-600 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">PROJECTS</a>
             </nav>
 
             <!-- Controls capsule -->
@@ -403,7 +403,7 @@
                 </button>
 
                 <!-- Connect With Me Button (Desktop) -->
-                <a href="https://www.linkedin.com/in/aadiil?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" class="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full border border-cyan-600 dark:border-cyan-500 text-cyan-600 dark:text-cyan-400 hover:bg-cyan-50 dark:hover:bg-cyan-500/10 font-medium transition-all uppercase text-xs tracking-wider">
+                <a href="https://www.linkedin.com/in/aadiil?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" class="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full border border-violet-600 dark:border-violet-500 text-violet-600 dark:text-violet-400 hover:bg-violet-50 dark:hover:bg-violet-500/10 font-medium transition-all uppercase text-xs tracking-wider">
                     <i data-lucide="linkedin" class="w-4 h-4"></i> Connect on LinkedIn
                 </a>
 
@@ -428,7 +428,7 @@
             <a href="#experience" class="mobile-link px-4 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-white/50 dark:hover:bg-white/5 transition-colors">Experience</a>
             <a href="#projects" class="mobile-link px-4 py-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-white/50 dark:hover:bg-white/5 transition-colors">Projects</a>
             <div class="my-1 border-t border-slate-200/60 dark:border-white/10"></div>
-            <a href="https://www.linkedin.com/in/aadiil?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" class="mobile-link flex items-center gap-2 px-4 py-2.5 rounded-xl text-cyan-600 dark:text-cyan-400 font-semibold hover:bg-cyan-50/50 dark:hover:bg-cyan-500/10 transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i> Connect on LinkedIn</a>
+            <a href="https://www.linkedin.com/in/aadiil?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" class="mobile-link flex items-center gap-2 px-4 py-2.5 rounded-xl text-violet-600 dark:text-violet-400 font-semibold hover:bg-violet-50/50 dark:hover:bg-violet-500/10 transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i> Connect on LinkedIn</a>
         </nav>
     </div>
 
@@ -436,8 +436,8 @@
         <!-- Hero Section -->
         <section id="hero" class="min-h-screen flex items-center justify-center relative pt-24 pb-12">
             <div class="container mx-auto px-6 text-center z-10">
-                <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/20 border border-amber-300 dark:border-amber-700/50 text-amber-700 dark:text-amber-300 text-xs font-mono tracking-widest uppercase">
-                    <span class="w-2 h-2 rounded-full bg-amber-500 led-dot" aria-hidden="true"></span>
+                <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-lime-100 dark:bg-lime-900/20 border border-lime-300 dark:border-lime-700/50 text-lime-700 dark:text-lime-300 text-xs font-mono tracking-widest uppercase">
+                    <span class="w-2 h-2 rounded-full bg-lime-500 led-dot" aria-hidden="true"></span>
                     Now: Proposal &amp; Detail Engineer
                 </div>
                 
@@ -447,7 +447,7 @@
                 
                 <div class="min-h-[2.5rem] sm:min-h-[3rem] md:min-h-[4rem] mb-8 flex justify-center items-center px-4">
                     <span id="typewriter" class="text-lg sm:text-2xl md:text-4xl text-slate-600 dark:text-slate-300 font-light font-mono text-center"></span>
-                    <span class="cursor-blink w-1 h-6 sm:h-8 md:h-10 bg-cyan-600 dark:bg-cyan-400 ml-2 shrink-0"></span>
+                    <span class="cursor-blink w-1 h-6 sm:h-8 md:h-10 bg-violet-600 dark:bg-violet-400 ml-2 shrink-0"></span>
                 </div>
 
                 <p class="max-w-2xl mx-auto text-slate-600 dark:text-slate-400 text-base md:text-lg mb-8 leading-relaxed reveal px-2">
@@ -457,21 +457,21 @@
 
                 <div class="glass-panel inline-flex flex-col items-center gap-2 mb-8 reveal px-6 py-4 rounded-[28px] mx-auto w-fit" aria-hidden="true">
                     <svg viewBox="0 0 320 60" class="w-56 sm:w-64 md:w-80 h-auto opacity-80" preserveAspectRatio="none">
-                        <polyline class="scope-path text-amber-500 dark:text-amber-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        <polyline class="scope-path text-fuchsia-500 dark:text-fuchsia-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             points="0,30 20,30 30,8 40,52 50,30 70,30 80,12 90,48 100,30 120,30 130,8 140,52 150,30 170,30 180,12 190,48 200,30 220,30 230,8 240,52 250,30 270,30 280,12 290,48 300,30 320,30" />
                     </svg>
                     <span class="font-mono text-[10px] md:text-xs tracking-[0.3em] text-slate-400 dark:text-slate-500 uppercase">415V &middot; 3&phi; &middot; 50Hz</span>
                 </div>
 
                 <div class="flex flex-col md:flex-row justify-center items-center gap-4 reveal">
-                    <a href="#projects" class="liquid-btn group relative px-8 py-3 rounded-full bg-cyan-600 text-white font-semibold overflow-hidden transition-all hover:bg-cyan-500 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] dark:hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]">
+                    <a href="#projects" class="liquid-btn group relative px-8 py-3 rounded-full bg-violet-600 text-white font-semibold overflow-hidden transition-all hover:bg-violet-500 hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] dark:hover:shadow-[0_0_20px_rgba(167,139,250,0.4)]">
                         <span class="relative z-10 flex items-center gap-2">View Projects <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i></span>
                     </a>
                     
                     <div class="flex items-center gap-5 mt-6 md:mt-0 px-6">
-                        <a href="https://www.linkedin.com/in/aadiil?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-transform hover:-translate-y-1" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
-                        <a href="https://github.com/aadilll2121" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-transform hover:-translate-y-1" aria-label="GitHub"><i data-lucide="github" class="w-6 h-6"></i></a>
-                        <a href="https://www.instagram.com/aadil_6355" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-transform hover:-translate-y-1" aria-label="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                        <a href="https://www.linkedin.com/in/aadiil?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-violet-600 dark:hover:text-violet-400 transition-transform hover:-translate-y-1" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                        <a href="https://github.com/aadilll2121" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-violet-600 dark:hover:text-violet-400 transition-transform hover:-translate-y-1" aria-label="GitHub"><i data-lucide="github" class="w-6 h-6"></i></a>
+                        <a href="https://www.instagram.com/aadil_6355" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-violet-600 dark:hover:text-violet-400 transition-transform hover:-translate-y-1" aria-label="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
                     </div>
                 </div>
             </div>
@@ -486,7 +486,7 @@
             <div class="container mx-auto px-6">
                 <div class="max-w-4xl mx-auto glass-panel p-6 sm:p-8 md:p-12 rounded-2xl reveal">
                     <div class="flex items-center gap-4 mb-8">
-                        <div class="p-3 bg-cyan-100 dark:bg-cyan-900/30 rounded-lg text-cyan-600 dark:text-cyan-400 shrink-0">
+                        <div class="p-3 bg-violet-100 dark:bg-violet-900/30 rounded-lg text-violet-600 dark:text-violet-400 shrink-0">
                             <i data-lucide="user" class="w-6 h-6"></i>
                         </div>
                         <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Engineering The Future</h2>
@@ -495,7 +495,7 @@
                         I'm an <strong class="text-slate-900 dark:text-white">Electrical &amp; Instrumentation Engineer</strong> at ABC Process Solutions Pvt. Ltd., where I work across proposal and detail engineering for industrial process plants — from techno-commercial estimates to panel design, instrumentation, and automation.
                     </p>
                     <p class="text-slate-600 dark:text-slate-400 text-base md:text-lg leading-relaxed">
-                        My background spans <strong class="text-cyan-600 dark:text-cyan-400">power system studies</strong> in ETAP, <strong class="text-cyan-600 dark:text-cyan-400">embedded control</strong> on STM32, and hands-on prototyping — whether that's coordinating relay protection for an industrial network or designing a cycloconverter from scratch. I graduated from Birla Vishvakarma Mahavidyalaya with Distinction, and I like problems that sit right at the intersection of hardware and rigor.
+                        My background spans <strong class="text-violet-600 dark:text-violet-400">power system studies</strong> in ETAP, <strong class="text-violet-600 dark:text-violet-400">embedded control</strong> on STM32, and hands-on prototyping — whether that's coordinating relay protection for an industrial network or designing a cycloconverter from scratch. I graduated from Birla Vishvakarma Mahavidyalaya with Distinction, and I like problems that sit right at the intersection of hardware and rigor.
                     </p>
                 </div>
             </div>
@@ -506,42 +506,42 @@
             <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center mb-16 reveal">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">Technical Arsenal</h2>
-                    <div class="w-20 h-1 bg-cyan-500 mx-auto rounded-full"></div>
+                    <div class="w-20 h-1 bg-violet-500 mx-auto rounded-full"></div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
                     <!-- Software & Languages -->
                     <div class="reveal">
                         <h3 class="text-xl font-semibold mb-6 flex items-center gap-2 text-slate-800 dark:text-white">
-                            <i data-lucide="code-2" class="text-cyan-600 dark:text-cyan-400"></i> Simulation &amp; Code
+                            <i data-lucide="code-2" class="text-violet-600 dark:text-violet-400"></i> Simulation &amp; Code
                         </h3>
                         <div class="flex flex-wrap gap-4">
-                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">MATLAB/Simulink</span>
-                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">ETAP</span>
-                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">AutoCAD Electrical</span>
-                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">STM32 CubeIDE</span>
-                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">Proteus</span>
-                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">C/C++</span>
-                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">Python</span>
-                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">SQL</span>
-                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm dark:shadow-none transition-all cursor-default">HTML/CSS</span>
+                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-violet-400 hover:text-violet-600 dark:hover:text-violet-400 shadow-sm dark:shadow-none transition-all cursor-default">MATLAB/Simulink</span>
+                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-violet-400 hover:text-violet-600 dark:hover:text-violet-400 shadow-sm dark:shadow-none transition-all cursor-default">ETAP</span>
+                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-violet-400 hover:text-violet-600 dark:hover:text-violet-400 shadow-sm dark:shadow-none transition-all cursor-default">AutoCAD Electrical</span>
+                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-violet-400 hover:text-violet-600 dark:hover:text-violet-400 shadow-sm dark:shadow-none transition-all cursor-default">STM32 CubeIDE</span>
+                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-violet-400 hover:text-violet-600 dark:hover:text-violet-400 shadow-sm dark:shadow-none transition-all cursor-default">Proteus</span>
+                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-violet-400 hover:text-violet-600 dark:hover:text-violet-400 shadow-sm dark:shadow-none transition-all cursor-default">C/C++</span>
+                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-violet-400 hover:text-violet-600 dark:hover:text-violet-400 shadow-sm dark:shadow-none transition-all cursor-default">Python</span>
+                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-violet-400 hover:text-violet-600 dark:hover:text-violet-400 shadow-sm dark:shadow-none transition-all cursor-default">SQL</span>
+                            <span class="chip-component px-4 py-2 bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-white/60 dark:border-white/10 rounded-full text-slate-700 dark:text-slate-300 hover:border-violet-400 hover:text-violet-600 dark:hover:text-violet-400 shadow-sm dark:shadow-none transition-all cursor-default">HTML/CSS</span>
                         </div>
                     </div>
 
                     <!-- Core Domains -->
                     <div class="reveal">
                         <h3 class="text-xl font-semibold mb-6 flex items-center gap-2 text-slate-800 dark:text-white">
-                            <i data-lucide="cpu" class="text-amber-600 dark:text-amber-400"></i> Core Competencies
+                            <i data-lucide="cpu" class="text-fuchsia-600 dark:text-fuchsia-400"></i> Core Competencies
                         </h3>
                         <div class="flex flex-wrap gap-4">
-                            <span class="chip-component px-4 py-2 bg-amber-50/60 dark:bg-amber-900/20 backdrop-blur-md border border-amber-200/70 dark:border-amber-800/50 rounded-full text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">Power System Analysis</span>
-                            <span class="chip-component px-4 py-2 bg-amber-50/60 dark:bg-amber-900/20 backdrop-blur-md border border-amber-200/70 dark:border-amber-800/50 rounded-full text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">Relay Coordination</span>
-                            <span class="chip-component px-4 py-2 bg-amber-50/60 dark:bg-amber-900/20 backdrop-blur-md border border-amber-200/70 dark:border-amber-800/50 rounded-full text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">Panel Design (MCC/PCC/VFD)</span>
-                            <span class="chip-component px-4 py-2 bg-amber-50/60 dark:bg-amber-900/20 backdrop-blur-md border border-amber-200/70 dark:border-amber-800/50 rounded-full text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">Instrumentation &amp; P&amp;ID</span>
-                            <span class="chip-component px-4 py-2 bg-amber-50/60 dark:bg-amber-900/20 backdrop-blur-md border border-amber-200/70 dark:border-amber-800/50 rounded-full text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">SCADA &amp; PLC (TIA Portal)</span>
-                            <span class="chip-component px-4 py-2 bg-amber-50/60 dark:bg-amber-900/20 backdrop-blur-md border border-amber-200/70 dark:border-amber-800/50 rounded-full text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">Circuit Design</span>
-                            <span class="chip-component px-4 py-2 bg-amber-50/60 dark:bg-amber-900/20 backdrop-blur-md border border-amber-200/70 dark:border-amber-800/50 rounded-full text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">Microcontrollers</span>
-                            <span class="chip-component px-4 py-2 bg-amber-50/60 dark:bg-amber-900/20 backdrop-blur-md border border-amber-200/70 dark:border-amber-800/50 rounded-full text-amber-800 dark:text-amber-200 shadow-sm dark:shadow-none">EV Technology</span>
+                            <span class="chip-component px-4 py-2 bg-fuchsia-50/60 dark:bg-fuchsia-900/20 backdrop-blur-md border border-fuchsia-200/70 dark:border-fuchsia-800/50 rounded-full text-fuchsia-800 dark:text-fuchsia-200 shadow-sm dark:shadow-none">Power System Analysis</span>
+                            <span class="chip-component px-4 py-2 bg-fuchsia-50/60 dark:bg-fuchsia-900/20 backdrop-blur-md border border-fuchsia-200/70 dark:border-fuchsia-800/50 rounded-full text-fuchsia-800 dark:text-fuchsia-200 shadow-sm dark:shadow-none">Relay Coordination</span>
+                            <span class="chip-component px-4 py-2 bg-fuchsia-50/60 dark:bg-fuchsia-900/20 backdrop-blur-md border border-fuchsia-200/70 dark:border-fuchsia-800/50 rounded-full text-fuchsia-800 dark:text-fuchsia-200 shadow-sm dark:shadow-none">Panel Design (MCC/PCC/VFD)</span>
+                            <span class="chip-component px-4 py-2 bg-fuchsia-50/60 dark:bg-fuchsia-900/20 backdrop-blur-md border border-fuchsia-200/70 dark:border-fuchsia-800/50 rounded-full text-fuchsia-800 dark:text-fuchsia-200 shadow-sm dark:shadow-none">Instrumentation &amp; P&amp;ID</span>
+                            <span class="chip-component px-4 py-2 bg-fuchsia-50/60 dark:bg-fuchsia-900/20 backdrop-blur-md border border-fuchsia-200/70 dark:border-fuchsia-800/50 rounded-full text-fuchsia-800 dark:text-fuchsia-200 shadow-sm dark:shadow-none">SCADA &amp; PLC (TIA Portal)</span>
+                            <span class="chip-component px-4 py-2 bg-fuchsia-50/60 dark:bg-fuchsia-900/20 backdrop-blur-md border border-fuchsia-200/70 dark:border-fuchsia-800/50 rounded-full text-fuchsia-800 dark:text-fuchsia-200 shadow-sm dark:shadow-none">Circuit Design</span>
+                            <span class="chip-component px-4 py-2 bg-fuchsia-50/60 dark:bg-fuchsia-900/20 backdrop-blur-md border border-fuchsia-200/70 dark:border-fuchsia-800/50 rounded-full text-fuchsia-800 dark:text-fuchsia-200 shadow-sm dark:shadow-none">Microcontrollers</span>
+                            <span class="chip-component px-4 py-2 bg-fuchsia-50/60 dark:bg-fuchsia-900/20 backdrop-blur-md border border-fuchsia-200/70 dark:border-fuchsia-800/50 rounded-full text-fuchsia-800 dark:text-fuchsia-200 shadow-sm dark:shadow-none">EV Technology</span>
                         </div>
                     </div>
                 </div>
@@ -553,14 +553,14 @@
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 reveal">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">Education &amp; Certifications</h2>
-                    <div class="w-20 h-1 bg-cyan-500 mx-auto rounded-full"></div>
+                    <div class="w-20 h-1 bg-violet-500 mx-auto rounded-full"></div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     <!-- Degree -->
                     <div class="glass-panel p-6 sm:p-8 rounded-2xl hover-card reveal">
                         <div class="flex items-start gap-4">
-                            <div class="p-3 bg-cyan-100 dark:bg-cyan-900/30 rounded-lg text-cyan-600 dark:text-cyan-400 shrink-0">
+                            <div class="p-3 bg-violet-100 dark:bg-violet-900/30 rounded-lg text-violet-600 dark:text-violet-400 shrink-0">
                                 <i data-lucide="graduation-cap" class="w-8 h-8"></i>
                             </div>
                             <div>
@@ -575,17 +575,17 @@
                     <!-- Certifications -->
                     <div class="glass-panel p-6 sm:p-8 rounded-2xl hover-card reveal">
                         <div class="flex items-start gap-4">
-                            <div class="p-3 bg-cyan-100 dark:bg-cyan-900/30 rounded-lg text-cyan-600 dark:text-cyan-400 shrink-0">
+                            <div class="p-3 bg-violet-100 dark:bg-violet-900/30 rounded-lg text-violet-600 dark:text-violet-400 shrink-0">
                                 <i data-lucide="award" class="w-8 h-8"></i>
                             </div>
                             <div class="w-full">
                                 <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Certifications</h3>
                                 <div class="space-y-4">
-                                    <div class="border-l-2 border-cyan-500 pl-4">
+                                    <div class="border-l-2 border-violet-500 pl-4">
                                         <h4 class="font-semibold text-slate-800 dark:text-slate-200">Diploma in Programming Languages</h4>
                                         <p class="text-sm text-slate-500 dark:text-slate-400">Information Technology Center, Mogri (October 2024 - February 2025)</p>
                                     </div>
-                                    <div class="border-l-2 border-cyan-500 pl-4">
+                                    <div class="border-l-2 border-violet-500 pl-4">
                                         <h4 class="font-semibold text-slate-800 dark:text-slate-200">AutoCAD Electrical</h4>
                                         <p class="text-sm text-slate-500 dark:text-slate-400">Information Technology Center, Mogri (June 2024 - July 2024)</p>
                                     </div>
@@ -602,7 +602,7 @@
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 reveal">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">Professional Journey</h2>
-                    <div class="w-20 h-1 bg-cyan-500 mx-auto rounded-full"></div>
+                    <div class="w-20 h-1 bg-violet-500 mx-auto rounded-full"></div>
                 </div>
 
                 <div class="relative max-w-3xl mx-auto">
@@ -612,10 +612,10 @@
                     <!-- Item 0: ABC Process Solutions (Latest) -->
                     <div class="relative mb-12 reveal">
                         <div class="md:flex items-center justify-between group">
-                            <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-amber-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform led-dot"></div>
+                            <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-fuchsia-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform led-dot"></div>
                             
                             <div class="ml-10 md:ml-0 md:w-[45%] md:mr-auto glass-panel p-6 rounded-xl hover-card md:text-right">
-                                <span class="text-amber-600 dark:text-amber-400 font-mono text-sm">June 2026 - Present</span>
+                                <span class="text-fuchsia-600 dark:text-fuchsia-400 font-mono text-sm">June 2026 - Present</span>
                                 <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">Proposal Engineer &ndash; Electrical &amp; Instrumentation</h3>
                                 <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">ABC Process Solutions Pvt. Ltd., Anand</p>
                                 <ul class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed list-none space-y-2 text-left md:text-right">
@@ -632,10 +632,10 @@
                     <!-- Item 1: Elcon -->
                     <div class="relative mb-12 reveal">
                         <div class="md:flex items-center justify-between flex-row-reverse group">
-                            <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform"></div>
+                            <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-violet-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform"></div>
                             
                             <div class="ml-10 md:ml-0 md:w-[45%] md:ml-auto glass-panel p-6 rounded-xl hover-card">
-                                <span class="text-cyan-600 dark:text-cyan-400 font-mono text-sm">December 2025 - April 2026</span>
+                                <span class="text-violet-600 dark:text-violet-400 font-mono text-sm">December 2025 - April 2026</span>
                                 <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">Project Intern</h3>
                                 <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">Elcon Engineers Pvt. Ltd., Vadodara</p>
                                 <ul class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed list-disc pl-5 space-y-2">
@@ -650,10 +650,10 @@
                     <!-- Item 2: EV Tech -->
                     <div class="relative mb-12 reveal">
                         <div class="md:flex items-center justify-between group">
-                            <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform"></div>
+                            <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-violet-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform"></div>
                             
                             <div class="ml-10 md:ml-0 md:w-[45%] md:mr-auto glass-panel p-6 rounded-xl hover-card md:text-right">
-                                <span class="text-cyan-600 dark:text-cyan-400 font-mono text-sm">June 2025 - July 2025</span>
+                                <span class="text-violet-600 dark:text-violet-400 font-mono text-sm">June 2025 - July 2025</span>
                                 <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">EV Technology Intern</h3>
                                 <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">BVM Engg. College (IEI Organized)</p>
                                 <ul class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed list-none space-y-2 text-left md:text-right">
@@ -669,10 +669,10 @@
                     <!-- Item 3: Akaaish -->
                     <div class="relative mb-12 reveal">
                         <div class="md:flex items-center justify-between flex-row-reverse group">
-                            <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform"></div>
+                            <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-violet-500 rounded-full border-4 border-slate-100 dark:border-slate-900 z-10 group-hover:scale-150 transition-transform"></div>
                             
                             <div class="ml-10 md:ml-0 md:w-[45%] md:ml-auto glass-panel p-6 rounded-xl hover-card">
-                                <span class="text-cyan-600 dark:text-cyan-400 font-mono text-sm">June 2024 - July 2024</span>
+                                <span class="text-violet-600 dark:text-violet-400 font-mono text-sm">June 2024 - July 2024</span>
                                 <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">Summer Intern</h3>
                                 <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">Akaaish Mechatronics (Elecon Unit)</p>
                                 <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
@@ -691,7 +691,7 @@
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 reveal">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">Featured Projects</h2>
-                    <div class="w-20 h-1 bg-cyan-500 mx-auto rounded-full"></div>
+                    <div class="w-20 h-1 bg-violet-500 mx-auto rounded-full"></div>
                 </div>
 
                 <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -701,14 +701,14 @@
                             COMPLETED
                         </div>
                         <div class="h-40 sm:h-48 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center border-b border-slate-200 dark:border-slate-700 relative group">
-                            <div class="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            <i data-lucide="activity" class="w-14 h-14 sm:w-16 sm:h-16 text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-500"></i>
+                            <div class="absolute inset-0 bg-violet-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <i data-lucide="activity" class="w-14 h-14 sm:w-16 sm:h-16 text-violet-600 dark:text-violet-400 group-hover:scale-110 transition-transform duration-500"></i>
                         </div>
                         <div class="p-6 sm:p-8">
                             <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">Industrial Power System Studies</h3>
                             <div class="flex gap-2 mb-4 text-xs font-mono flex-wrap">
-                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-cyan-300">ETAP</span>
-                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-cyan-300">Power Analysis</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-violet-300">ETAP</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-violet-300">Power Analysis</span>
                             </div>
                             <p class="text-slate-600 dark:text-slate-400 mb-2">
                                 Executed during a project internship at Elcon Engineers Pvt. Ltd. Engineered a complete ETAP model of an industrial distribution network, from SLD design through full implementation with real-world component data.
@@ -722,14 +722,14 @@
                     <!-- Project Card 1: Open Loop -->
                     <div class="glass-panel rounded-2xl overflow-hidden hover-card reveal">
                         <div class="h-40 sm:h-48 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center border-b border-slate-200 dark:border-slate-700 relative group">
-                            <div class="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            <i data-lucide="cpu" class="w-14 h-14 sm:w-16 sm:h-16 text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-500"></i>
+                            <div class="absolute inset-0 bg-violet-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <i data-lucide="cpu" class="w-14 h-14 sm:w-16 sm:h-16 text-violet-600 dark:text-violet-400 group-hover:scale-110 transition-transform duration-500"></i>
                         </div>
                         <div class="p-6 sm:p-8">
                             <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">Open Loop IPMSM Motor Drive Control</h3>
                             <div class="flex gap-2 mb-4 text-xs font-mono flex-wrap">
-                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-cyan-300">Embedded C</span>
-                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-cyan-300">STM32</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-violet-300">Embedded C</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-violet-300">STM32</span>
                             </div>
                             <p class="text-slate-600 dark:text-slate-400">
                                 Developed and implemented embedded C firmware on an STM32 microcontroller for open-loop control. Interfaced the MCU with a 3-phase inverter driver and achieved stable motor rotation at constant reference speeds.
@@ -740,14 +740,14 @@
                     <!-- Project Card 2: Cycloconverter -->
                     <div class="glass-panel rounded-2xl overflow-hidden hover-card reveal">
                         <div class="h-40 sm:h-48 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center border-b border-slate-200 dark:border-slate-700 relative group">
-                            <div class="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            <i data-lucide="zap" class="w-14 h-14 sm:w-16 sm:h-16 text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-500"></i>
+                            <div class="absolute inset-0 bg-violet-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <i data-lucide="zap" class="w-14 h-14 sm:w-16 sm:h-16 text-violet-600 dark:text-violet-400 group-hover:scale-110 transition-transform duration-500"></i>
                         </div>
                         <div class="p-6 sm:p-8">
                             <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">Cycloconverter Technologies</h3>
                             <div class="flex gap-2 mb-4 text-xs font-mono flex-wrap">
-                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-cyan-300">MATLAB</span>
-                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-cyan-300">Arduino</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-violet-300">MATLAB</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-700 dark:text-violet-300">Arduino</span>
                             </div>
                             <p class="text-slate-600 dark:text-slate-400">
                                 Designed a proof-of-concept cycloconverter to step down 220V to 12V using SCRs and an optocoupler. Created a functional simulation in MATLAB with control logic implemented on an Arduino UNO.
@@ -765,14 +765,14 @@
             <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-6">Let's Electrify The World</h2>
             <p class="text-slate-600 dark:text-slate-400 mb-10 max-w-lg mx-auto">Open for collaborations and interesting problems in power systems, instrumentation, and automation. Let's connect on LinkedIn.</p>
             
-            <a href="https://www.linkedin.com/in/aadiil?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" class="liquid-btn relative inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-full transition-transform hover:scale-105 mb-12 shadow-lg shadow-cyan-500/25 overflow-hidden">
+            <a href="https://www.linkedin.com/in/aadiil?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" class="liquid-btn relative inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white font-bold py-3 px-8 rounded-full transition-transform hover:scale-105 mb-12 shadow-lg shadow-violet-500/25 overflow-hidden">
                 <i data-lucide="linkedin" class="w-5 h-5"></i> Connect on LinkedIn
             </a>
 
             <div class="flex justify-center gap-8 mb-8 items-center">
-                <a href="https://www.linkedin.com/in/aadiil?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
-                <a href="https://github.com/aadilll2121" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform" aria-label="GitHub"><i data-lucide="github" class="w-6 h-6"></i></a>
-                <a href="https://www.instagram.com/aadil_6355" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-white transition-colors hover:scale-110 transform" aria-label="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                <a href="https://www.linkedin.com/in/aadiil?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-violet-600 dark:hover:text-white transition-colors hover:scale-110 transform" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                <a href="https://github.com/aadilll2121" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-violet-600 dark:hover:text-white transition-colors hover:scale-110 transform" aria-label="GitHub"><i data-lucide="github" class="w-6 h-6"></i></a>
+                <a href="https://www.instagram.com/aadil_6355" target="_blank" rel="noopener" class="text-slate-500 dark:text-slate-400 hover:text-violet-600 dark:hover:text-white transition-colors hover:scale-110 transform" aria-label="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
             </div>
             
             <p class="text-slate-500 dark:text-slate-600 text-sm">&copy; <span id="year"></span> Aadil Vahora. Crafted with <i data-lucide="heart" class="w-3 h-3 inline text-red-500"></i> and Electrons.</p>
@@ -947,6 +947,7 @@
     </script>
 </body>
 </html>
+
 
 
 
