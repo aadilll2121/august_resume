@@ -1,0 +1,9 @@
+{
+  "name": "aadil-electric-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Aadil Vahora\u2019s electrical engineering portfolio, with Bookman typography and a light/dark academic profile layout.",
+  "scripts": {
+    "check": "node --check dist/app.js && node --check dist/theme-init.js"
+  }
+}
